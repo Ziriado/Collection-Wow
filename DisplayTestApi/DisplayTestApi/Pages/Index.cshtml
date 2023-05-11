@@ -1,0 +1,29 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    
+
+    <div class="mountpage" id="mountpage">
+
+            @foreach(var mount in Model.Mounts)
+            {
+                <div class="card">
+                    <a><img src="@mount.ImgLink" /></a>
+                    <h3>@mount.Name</h3>
+                    <h5>@mount.ID is the id </h5>
+                    <p>@mount.WebLink</p>
+                    <p>@mount.Faction</p>
+                    <p>@mount.Expansion</p>
+                    <p>@mount.PlayerClass</p>
+                    </div>
+            }
+ 
+
+    </div>
+
+
+</div>
