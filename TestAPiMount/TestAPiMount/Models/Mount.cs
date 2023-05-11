@@ -1530,6 +1530,7 @@ namespace TestAPiMount.Models
 
             mounts.Add(new Mount
             {
+<<<<<<< Updated upstream
                 Name = "White Skeletal Warhorse",
                 ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/168502.jpg",
                 Faction = faction[2],
@@ -1618,6 +1619,516 @@ namespace TestAPiMount.Models
                 Expansion = expansion[2],
                 WebLink = "https://www.wowhead.com/wotlk/item=40775/winged-steed-of-the-ebon-blade"
             });
+=======
+                Name = "Summon Dreadsteed",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/4449.jpg",
+                Faction = faction[0],
+                Class = playerClass[2],
+                Expansion = expansion[0],
+                WebLink = "https://www.wowhead.com/classic/spell=23161/summon-dreadsteed"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Summon Felsteed",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/1087775.jpg",
+                Faction = faction[0],
+                Class = playerClass[2],
+                Expansion = expansion[0],
+                WebLink = "https://www.wowhead.com/classic/spell=5784/summon-felsteed"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Black Qiraji Resonating Crystal",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/984540.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[0],
+                WebLink = "https://www.wowhead.com/classic/item=21176/black-qiraji-resonating-crystal"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Red Qiraji Resonating Crystal",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/81945.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[0],
+                WebLink = "https://www.wowhead.com/classic/item=21321/red-qiraji-resonating-crystal"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Yellow Qiraji Resonating Crystal",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/67824.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[0],
+                WebLink = "https://www.wowhead.com/classic/item=21324/yellow-qiraji-resonating-crystal"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Green Qiraji Resonating Crystal",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/86148.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[0],
+                WebLink = "https://www.wowhead.com/classic/item=21323/green-qiraji-resonating-crystal"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Blue Qiraji Resonating Crystal",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/78061.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[0],
+                WebLink = "https://www.wowhead.com/classic/item=21218/blue-qiraji-resonating-crystal"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Swift Zulian Tiger",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/958635.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[0],
+                WebLink = "https://www.wowhead.com/classic/item=19902/swift-zulian-tiger"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Swift Razzashi Raptor",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/926592.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[0],
+                WebLink = "https://www.wowhead.com/classic/item=19872/swift-razzashi-raptor"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Deathcharger's Reins",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/86980.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[0],
+                WebLink = "https://www.wowhead.com/classic/item=13335/deathchargers-reins"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Grand Black War Mammoth",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/120075.jpg",
+                Faction = faction[1],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=43959/reins-of-the-grand-black-war-mammoth"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Grand Black War Mammoth",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/157006.jpg",
+                Faction = faction[2],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44083/reins-of-the-grand-black-war-mammoth"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Black Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/170571.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=43986/reins-of-the-black-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Azure Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/168761.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=43952/reins-of-the-azure-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Blue Proto-Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/169540.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44151/reins-of-the-blue-proto-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Blue Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/167293.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=43953/reins-of-the-blue-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Twilight Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/1081663.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=43954/reins-of-the-twilight-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Mimiron's Head",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/1106288.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=45693/mimirons-head"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Invincible's Reins",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/171750.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=50818/invincibles-reins"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the White Polar Bear",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/168504.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=43962/reins-of-the-white-polar-bear"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "X-45 Heartbreaker",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/168182.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=50250/x-45-heartbreaker"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Time-Lost Proto-Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/1081254.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44168/reins-of-the-time-lost-proto-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Green Proto-Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/170112.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44707/reins-of-the-green-proto-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Sea Turtle",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/1081413.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=46109/sea-turtle"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Magnificent Flying Carpet",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/168513.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44558/magnificent-flying-carpet"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Frosty Flying Carpet",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/168162.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=54797/frosty-flying-carpet"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Flying Carpet",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/167026.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44554/flying-carpet"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Mechano-hog",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/170083.jpg",
+                Faction = faction[2],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=41508/mechano-hog"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Mekgineer's Chopper",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/159820.jpg",
+                Faction = faction[1],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44413/mekgineers-chopper"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Violet Proto-Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/170570.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44177/reins-of-the-violet-proto-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Rusted Proto-Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/161712.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=45802/reins-of-the-rusted-proto-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Red Proto-Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/1081204.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44160/reins-of-the-red-proto-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Red Dragonhawk Mount",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/150914.jpg",
+                Faction = faction[2],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44842/red-dragonhawk-mount"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Plagued Proto-Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/133059.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44175/reins-of-the-plagued-proto-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Ironbound Proto-Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/166998.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=45801/reins-of-the-ironbound-proto-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Icebound Frostbrood Vanquisher",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/170141.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=51955/reins-of-the-icebound-frostbrood-vanquisher"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Bronze Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/166969.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=43951/reins-of-the-bronze-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Blue Dragonhawk Mount",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/166048.jpg",
+                Faction = faction[1],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44843/blue-dragonhawk-mount"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Bloodbathed Frostbrood Vanquisher",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/171926.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=51954/reins-of-the-bloodbathed-frostbrood-vanquisher"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Black Proto-Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/154361.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44164/reins-of-the-black-proto-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Albino Drake",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/1085642.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44178/reins-of-the-albino-drake"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Swift Horde Wolf",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/149245.jpg",
+                Faction = faction[2],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=49046/swift-horde-wolf"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Swift Alliance Steed",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/151644.jpg",
+                Faction = faction[1],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=49044/swift-alliance-steed"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Crusader's White Warhorse",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/169230.jpg",
+                Faction = faction[1],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=49096/crusaders-white-warhorse"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Crusader's Black Warhorse",
+                ImgLink = "https://wow.zamimg.com/modelviewer/wrath/webthumbs/npc/242/29938.webp",
+                Faction = faction[2],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=49098/crusaders-black-warhorse"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Black War Bear",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/155538.jpg",
+                Faction = faction[2],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44224/reins-of-the-black-war-bear"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Reins of the Black War Bear",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/167765.jpg",
+                Faction = faction[1],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=44223/reins-of-the-black-war-bear"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Wrathful Gladiator's Frost Wyrm",
+                ImgLink = "https://wow.zamimg.com/modelviewer/wrath/webthumbs/npc/71/31047.webp",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=50435/wrathful-gladiators-frost-wyrm"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Relentless Gladiator's Frost Wyrm",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/168910.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=47840/relentless-gladiators-frost-wyrm"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Furious Gladiator's Frost Wyrm",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/155542.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=46171/furious-gladiators-frost-wyrm"
+            });
+
+            mounts.Add(new Mount
+            {
+                Name = "Deadly Gladiator's Frost Wyrm",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/166920.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=46708/deadly-gladiators-frost-wyrm"
+            });
+
+>>>>>>> Stashed changes
             for (int i = 0; i < mounts.Count; i++) 
             {
                 mounts[i].ID = i + 1;
