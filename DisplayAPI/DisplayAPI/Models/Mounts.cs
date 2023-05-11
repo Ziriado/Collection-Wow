@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace DisplayTestApi.Models
+namespace DisplayAPI.Models
 {
     public class Mounts
     {
@@ -19,6 +19,5 @@ namespace DisplayTestApi.Models
         public string PlayerClass { get; set; }
         [JsonPropertyName("expansion")]
         public string Expansion { get; set; }
-
     }
 }
