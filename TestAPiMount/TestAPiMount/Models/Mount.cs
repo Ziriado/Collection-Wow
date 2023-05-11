@@ -1530,7 +1530,6 @@ namespace TestAPiMount.Models
 
             mounts.Add(new Mount
             {
-<<<<<<< Updated upstream
                 Name = "White Skeletal Warhorse",
                 ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/168502.jpg",
                 Faction = faction[2],
@@ -1619,7 +1618,8 @@ namespace TestAPiMount.Models
                 Expansion = expansion[2],
                 WebLink = "https://www.wowhead.com/wotlk/item=40775/winged-steed-of-the-ebon-blade"
             });
-=======
+                mounts.Add(new Mount
+            {
                 Name = "Summon Dreadsteed",
                 ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/4449.jpg",
                 Faction = faction[0],
@@ -2128,7 +2128,6 @@ namespace TestAPiMount.Models
                 WebLink = "https://www.wowhead.com/wotlk/item=46708/deadly-gladiators-frost-wyrm"
             });
 
->>>>>>> Stashed changes
             for (int i = 0; i < mounts.Count; i++) 
             {
                 mounts[i].ID = i + 1;
