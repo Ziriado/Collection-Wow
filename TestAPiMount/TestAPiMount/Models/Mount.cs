@@ -917,7 +917,7 @@ namespace TestAPiMount.Models
             });
             mounts.Add(new Mount
             {
-                Name = "Reins of the Dark Riding Talbuk",
+                Name = "Reins of the Dark War Talbuk",
                 ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/30155.jpg",
                 Faction = faction[0],
                 Class = playerClass[0],
@@ -1144,7 +1144,7 @@ namespace TestAPiMount.Models
             {
                 Name = "Reins of the Tan War Talbuk",
                 ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/57441.jpg",
-                Faction = faction[1],
+                Faction = faction[2],
                 Class = playerClass[0],
                 Expansion = expansion[1],
                 WebLink = "https://www.wowhead.com/tbc/item=29105/reins-of-the-tan-war-talbuk"
@@ -1332,7 +1332,7 @@ namespace TestAPiMount.Models
             mounts.Add(new Mount
             {
                 Name = "Reins of the Grand Ice Mammoth",
-                ImgLink = "https://www.wowhead.com/wotlk/item=43961/reins-of-the-grand-ice-mammoth",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/135357.jpg",
                 Faction = faction[1],
                 Class = playerClass[0],
                 Expansion = expansion[2],

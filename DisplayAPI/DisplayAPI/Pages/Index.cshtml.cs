@@ -8,8 +8,8 @@ namespace DisplayAPI.Pages
         public List<Models.Mounts> Mounts { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
-            Mounts = await DAL.MountData.GetMounts();
-
+             Mounts = await DAL.MountData.GetMounts();
+            
             return Page();
         }
     }
