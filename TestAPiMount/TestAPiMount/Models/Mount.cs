@@ -2136,6 +2136,24 @@ namespace TestAPiMount.Models
                 Expansion = expansion[2],
                 WebLink = "https://www.wowhead.com/wotlk/spell=48778/acherus-deathcharger"
             });
+            mounts.Add(new Mount
+            {
+                Name = "Reawakened Phase-Hunter",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/1048615.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[1],
+                WebLink = "https://www.wowhead.com/tbc/item=184865/reawakened-phase-hunter"
+            });
+            mounts.Add(new Mount
+            {
+                Name = "Kalu'ak Whalebone Glider",
+                ImgLink = "https://wow.zamimg.com/uploads/screenshots/small/1075958.jpg",
+                Faction = faction[0],
+                Class = playerClass[0],
+                Expansion = expansion[2],
+                WebLink = "https://www.wowhead.com/wotlk/item=192455/kaluak-whalebone-glider"
+            });
 
             for (int i = 0; i < mounts.Count; i++)
             {
