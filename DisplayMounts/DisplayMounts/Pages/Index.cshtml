@@ -19,182 +19,186 @@
             <a href="##" onclick="history.go(-1); return false">Return</a>
         </div>
     }
-    else {
+    else
+    {
 
-    <div class="userpreference" id="preference">
-        <form method="post">
-            <input id="NeutralCheckBox" type="checkbox" value="Neutral" name="Preferences.Factions" />
-            <input id="AllianceCheckBox" type="checkbox" value="Alliance" name="Preferences.Factions" />
-            <input id="HordeCheckBox" type="checkbox" value="Horde" name="Preferences.Factions" />
+        <div class="userpreference" id="preference">
+            <form method="post">
+                <h3>Faction</h3>
+                <a>Neutral<input id="NeutralCheckBox" type="checkbox" value="Neutral" name="Preferences.Factions" /></a>
+                <a>Aliance<input id="AllianceCheckBox" type="checkbox" value="Alliance" name="Preferences.Factions" /></a>
+                <a>Horde</a><input id="HordeCheckBox" type="checkbox" value="Horde" name="Preferences.Factions" />
+                <br>
+                <h3>Class</h3>
+                <a>Neutral<input id="NeutralCheckBox" type="checkbox" value="Neutral" name="Preferences.Classes" /></a>
+                <a>Priest</a><input id="AllianceCheckBox" type="checkbox" value="Priest" name="Preferences.Classes" />
+                <a>Warlock</a><input id="HordeCheckBox" type="checkbox" value="Warlock" name="Preferences.Classes" />
+                <a>Mage</a><input id="NeutralCheckBox" type="checkbox" value="Mage" name="Preferences.Classes" />
+                <a>Druid</a><input id="AllianceCheckBox" type="checkbox" value="Druid" name="Preferences.Classes" />
+                <a>Rogue</a><input id="HordeCheckBox" type="checkbox" value="Rogue" name="Preferences.Classes" />
+                <a>Shaman</a><input id="NeutralCheckBox" type="checkbox" value="Shaman" name="Preferences.Classes" />
+                <a>Hunter</a><input id="AllianceCheckBox" type="checkbox" value="Hunter" name="Preferences.Classes" />
+                <a>Warrior</a><input id="HordeCheckBox" type="checkbox" value="Warior" name="Preferences.Classes" />
+                <a>Paladin</a><input id="AllianceCheckBox" type="checkbox" value="Paladin" name="Preferences.Classes" />
+                <a>Death Knight</a><input id="HordeCheckBox" type="checkbox" value="Death Knight" name="Preferences.Classes" />
+                <br>
+                <h3>Expansion</h3>
+                <a>Vanilla</a><input id="NeutralCheckBox" type="checkbox" value="Vanilla" name="Preferences.Expansions" />
+                <a>Burning Crusade</a><input id="AllianceCheckBox" type="checkbox" value="Burning Crusade" name="Preferences.Expansions" />
+                <a>Wrath of the Lich King</a><input id="HordeCheckBox" type="checkbox" value="Wrath of the Lich King" name="Preferences.Expansions" />
+                <br>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
 
-            <input id="NeutralCheckBox" type="checkbox" value="Neutral" name="Preferences.Classes" />
-            <input id="AllianceCheckBox" type="checkbox" value="Priest" name="Preferences.Classes" />
-            <input id="HordeCheckBox" type="checkbox" value="Warlock" name="Preferences.Classes" />
-            <input id="NeutralCheckBox" type="checkbox" value="Mage" name="Preferences.Classes" />
-            <input id="AllianceCheckBox" type="checkbox" value="Druid" name="Preferences.Classes" />
-            <input id="HordeCheckBox" type="checkbox" value="Rouge" name="Preferences.Classes" />
-            <input id="NeutralCheckBox" type="checkbox" value="Shaman" name="Preferences.Classes" />
-            <input id="AllianceCheckBox" type="checkbox" value="Hunter" name="Preferences.Classes" />
-            <input id="HordeCheckBox" type="checkbox" value="Warior" name="Preferences.Classes" />
-            <input id="AllianceCheckBox" type="checkbox" value="Paladin" name="Preferences.Classes" />
-            <input id="HordeCheckBox" type="checkbox" value="Death Knight" name="Preferences.Classes" />
-
-            <input id="NeutralCheckBox" type="checkbox" value="Vanilla" name="Preferences.Expansions" />
-            <input id="AllianceCheckBox" type="checkbox" value="Burning Crusade" name="Preferences.Expansions" />
-            <input id="HordeCheckBox" type="checkbox" value="Wrath of the Lich King" name="Preferences.Expansions" />
-
-            <button type="submit">Save Changes</button>
-        </form>
-    </div>
-
-    <div class="mountpage" id="mountpage">
-        @foreach (var mount in Model.ShowMounts)
-        {
-            <div class="card">
-                <a asp-route-id="@mount.ID"><img src="@mount.ImgLink" /></a>
-                <h3>@mount.Name</h3>
-                <h5>@mount.ID is the id </h5>
-                @*<p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>*@
-                <p>@mount.Faction</p>
-                <p>@mount.Expansion</p>
-                <p>@mount.PlayerClass</p>
-            </div>
-        }
-        <br />
-    </div>
+        <div class="mountpage" id="mountpage">
+            @foreach (var mount in Model.ShowMounts)
+            {
+                <div class="card">
+                    <a asp-route-id="@mount.ID"><img src="@mount.ImgLink" /></a>
+                    <h3>@mount.Name</h3>
+                    <h5>@mount.ID is the id </h5>
+                    @*<p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>*@
+                    <p>@mount.Faction</p>
+                    <p>@mount.Expansion</p>
+                    <p>@mount.PlayerClass</p>
+                </div>
+            }
+            <br />
+        </div>
 
     }
 
     @*<h1>Vanilla</h1>
-        <h3>Neutral Mounts</h3>
-        <h3>Aliance</h3>
+    <h3>Neutral Mounts</h3>
+    <h3>Aliance</h3>
     <div class="mountpage" id="mountpage">
-        @foreach (var mount in Model.VanillaMountsAliance)
-        {
-            <div class="card">
-                <a><img src="@mount.ImgLink" /></a>
-                <h3>@mount.Name</h3>
-                <h5>@mount.ID is the id </h5>
-                <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-                <p>@mount.Faction</p>
-                <p>@mount.Expansion</p>
-                <p>@mount.PlayerClass</p>
-            </div>
-        }
-        </div>
-        <br />
-        <h3>Horde</h3>
+    @foreach (var mount in Model.VanillaMountsAliance)
+    {
+    <div class="card">
+    <a><img src="@mount.ImgLink" /></a>
+    <h3>@mount.Name</h3>
+    <h5>@mount.ID is the id </h5>
+    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
+    <p>@mount.Faction</p>
+    <p>@mount.Expansion</p>
+    <p>@mount.PlayerClass</p>
+    </div>
+    }
+    </div>
+    <br />
+    <h3>Horde</h3>
     <div class="mountpage" id="mountpage">
-        @foreach (var mount in Model.VanillaMountsHorde)
-        {
-            <div class="card">
-                <a><img src="@mount.ImgLink" /></a>
-                <h3>@mount.Name</h3>
-                <h5>@mount.ID is the id </h5>
-                <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-                <p>@mount.Faction</p>
-                <p>@mount.Expansion</p>
-                <p>@mount.PlayerClass</p>
-            </div>
-        }
-        </div>
-        <br />
-        <h1>The Burning Crusade</h1>
-        <h3>Neutral Mounts</h3>
+    @foreach (var mount in Model.VanillaMountsHorde)
+    {
+    <div class="card">
+    <a><img src="@mount.ImgLink" /></a>
+    <h3>@mount.Name</h3>
+    <h5>@mount.ID is the id </h5>
+    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
+    <p>@mount.Faction</p>
+    <p>@mount.Expansion</p>
+    <p>@mount.PlayerClass</p>
+    </div>
+    }
+    </div>
+    <br />
+    <h1>The Burning Crusade</h1>
+    <h3>Neutral Mounts</h3>
     <div class="mountpage" id="mountpage">
-        @foreach (var mount in Model.TbcMountsNeutral)
-        {
-            <div class="card">
-                <a><img src="@mount.ImgLink" /></a>
-                <h3>@mount.Name</h3>
-                <h5>@mount.ID is the id </h5>
-                <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-                <p>@mount.Faction</p>
-                <p>@mount.Expansion</p>
-                <p>@mount.PlayerClass</p>
-            </div>
-        }
-        </div>
-        <br />
-        <h3>Aliance</h3>
+    @foreach (var mount in Model.TbcMountsNeutral)
+    {
+    <div class="card">
+    <a><img src="@mount.ImgLink" /></a>
+    <h3>@mount.Name</h3>
+    <h5>@mount.ID is the id </h5>
+    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
+    <p>@mount.Faction</p>
+    <p>@mount.Expansion</p>
+    <p>@mount.PlayerClass</p>
+    </div>
+    }
+    </div>
+    <br />
+    <h3>Aliance</h3>
     <div class="mountpage" id="mountpage">
-        @foreach (var mount in Model.TbcMountsAliance)
-        {
-            <div class="card">
-                <a><img src="@mount.ImgLink" /></a>
-                <h3>@mount.Name</h3>
-                <h5>@mount.ID is the id </h5>
-                <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-                <p>@mount.Faction</p>
-                <p>@mount.Expansion</p>
-                <p>@mount.PlayerClass</p>
-            </div>
-        }
-        </div>
-        <br />
-        <h3>Horde</h3>
+    @foreach (var mount in Model.TbcMountsAliance)
+    {
+    <div class="card">
+    <a><img src="@mount.ImgLink" /></a>
+    <h3>@mount.Name</h3>
+    <h5>@mount.ID is the id </h5>
+    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
+    <p>@mount.Faction</p>
+    <p>@mount.Expansion</p>
+    <p>@mount.PlayerClass</p>
+    </div>
+    }
+    </div>
+    <br />
+    <h3>Horde</h3>
     <div class="mountpage" id="mountpage">
-        @foreach (var mount in Model.TbcMountsHorde)
-        {
-            <div class="card">
-                <a><img src="@mount.ImgLink" /></a>
-                <h3>@mount.Name</h3>
-                <h5>@mount.ID is the id </h5>
-                <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-                <p>@mount.Faction</p>
-                <p>@mount.Expansion</p>
-                <p>@mount.PlayerClass</p>
-            </div>
-        }
-        <br />
-        </div>
-        <h1>Wrath of the Lich King</h1>
-        <h3>Neutral Mounts</h3>
+    @foreach (var mount in Model.TbcMountsHorde)
+    {
+    <div class="card">
+    <a><img src="@mount.ImgLink" /></a>
+    <h3>@mount.Name</h3>
+    <h5>@mount.ID is the id </h5>
+    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
+    <p>@mount.Faction</p>
+    <p>@mount.Expansion</p>
+    <p>@mount.PlayerClass</p>
+    </div>
+    }
+    <br />
+    </div>
+    <h1>Wrath of the Lich King</h1>
+    <h3>Neutral Mounts</h3>
     <div class="mountpage" id="mountpage">
-        @foreach (var mount in Model.WrathMountsNeutral)
-        {
-            <div class="card">
-                <a><img src="@mount.ImgLink" /></a>
-                <h3>@mount.Name</h3>
-                <h5>@mount.ID is the id </h5>
-                <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-                <p>@mount.Faction</p>
-                <p>@mount.Expansion</p>
-                <p>@mount.PlayerClass</p>
-            </div>
-        }
-        </div>
-        <br />
-        <h3>Aliance</h3>
+    @foreach (var mount in Model.WrathMountsNeutral)
+    {
+    <div class="card">
+    <a><img src="@mount.ImgLink" /></a>
+    <h3>@mount.Name</h3>
+    <h5>@mount.ID is the id </h5>
+    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
+    <p>@mount.Faction</p>
+    <p>@mount.Expansion</p>
+    <p>@mount.PlayerClass</p>
+    </div>
+    }
+    </div>
+    <br />
+    <h3>Aliance</h3>
     <div class="mountpage" id="mountpage">
-        @foreach (var mount in Model.WrathMountsAliance)
-        {
-            <div class="card">
-                <a><img src="@mount.ImgLink" /></a>
-                <h3>@mount.Name</h3>
-                <h5>@mount.ID is the id </h5>
-                <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-                <p>@mount.Faction</p>
-                <p>@mount.Expansion</p>
-                <p>@mount.PlayerClass</p>
-            </div>
-        }
-        </div>
-        <br />
-        <h3>Horde</h3>
+    @foreach (var mount in Model.WrathMountsAliance)
+    {
+    <div class="card">
+    <a><img src="@mount.ImgLink" /></a>
+    <h3>@mount.Name</h3>
+    <h5>@mount.ID is the id </h5>
+    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
+    <p>@mount.Faction</p>
+    <p>@mount.Expansion</p>
+    <p>@mount.PlayerClass</p>
+    </div>
+    }
+    </div>
+    <br />
+    <h3>Horde</h3>
     <div class="mountpage" id="mountpage">
-        @foreach (var mount in Model.WrathMountsHorde)
-        {
-            <div class="card">
-                <a><img src="@mount.ImgLink" /></a>
-                <h3>@mount.Name</h3>
-                <h5>@mount.ID is the id </h5>
-                <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-                <p>@mount.Faction</p>
-                <p>@mount.Expansion</p>
-                <p>@mount.PlayerClass</p>
-            </div>
-        }
-        </div>
-        <br />
+    @foreach (var mount in Model.WrathMountsHorde)
+    {
+    <div class="card">
+    <a><img src="@mount.ImgLink" /></a>
+    <h3>@mount.Name</h3>
+    <h5>@mount.ID is the id </h5>
+    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
+    <p>@mount.Faction</p>
+    <p>@mount.Expansion</p>
+    <p>@mount.PlayerClass</p>
+    </div>
+    }
+    </div>
+    <br />
     </div>*@
