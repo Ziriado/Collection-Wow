@@ -29,19 +29,33 @@ namespace DisplayMounts.Pages
 
         public async Task ShowUserPreference()
         {
-            foreach (string faction in Preferences.Factions)
-            {
-                foreach (string playerClass in Preferences.Classes)
-                {
-                    foreach (string expansion in Preferences.Expansions)
-                    {
-                        foreach (var mount in Mounts.Where(m => m.Faction == faction && m.PlayerClass == playerClass && m.Expansion == expansion))
-                        {
-                            ShowMounts.Add(mount);
-                        }
-                    }
-                }
-            }
+            List<string> factionlist = new List<string>();
+            List<string> expansionlist = new List<string>();
+            List<string> playerClassesList = new List<string>();
+            if (Preferences.Factions == null)
+                factionlist.Add("Neutral");
+
+            else
+                factionlist = Preferences.Factions;
+
+            if (Preferences.Expansions == null)
+                expansionlist.Add("Vanilla");
+
+            else
+                expansionlist = Preferences.Expansions;
+
+            if (Preferences.Classes == null)
+                playerClassesList.Add("Neutral");
+
+            else
+                playerClassesList = Preferences.Classes;
+
+            ShowMounts = factionlist.SelectMany
+                (faction => playerClassesList.SelectMany
+                (playerClass => expansionlist.SelectMany
+                (expansion => Mounts.Where
+                (m => m.Faction == faction && m.PlayerClass == playerClass && m.Expansion == expansion)))).ToList();
+            
         }
 
 
