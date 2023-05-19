@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DisplayMounts.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -6,38 +7,58 @@ namespace DisplayMounts.Pages
 {
     public class IndexModel : PageModel
     {
-        public List<Models.Mounts> Mounts { get; set; }
-        public List <Models.Mounts>WrathMounts { get; set; }
-        public List<Models.Mounts> TbcMounts { get; set; }
-        public List<Models.Mounts> VanillaMounts { get; set; }
-        public List<Models.Mounts> VanillaMountsNeutral { get; set; }
-        public List<Models.Mounts> VanillaMountsAliance { get; set; }
-        public List<Models.Mounts> VanillaMountsHorde { get; set; }
-        public List<Models.Mounts> TbcMountsNeutral { get; set; }
-        public List<Models.Mounts> TbcMountsAliance { get; set; }
-        public List<Models.Mounts> TbcMountsHorde { get; set; }
-        public List<Models.Mounts> WrathMountsNeutral { get; set; }
-        public List<Models.Mounts> WrathMountsAliance { get; set; }
-        public List<Models.Mounts> WrathMountsHorde { get; set; }
-        public async Task<IActionResult> OnGetAsync()
+
+        public IndexModel()
+        {
+            Mounts = new List<Models.Mounts>();
+            ShowMounts = new List<Models.Mounts>();
+        }
+
+        [BindProperty]
+        public PreferencesModel Preferences { get; set; }
+
+        public static List<Models.Mounts> Mounts { get; set; }
+        public List<Models.Mounts> ShowMounts { get; set; }
+        public Models.Mounts OneMount { get; set; }
+
+        public async Task OnPost()
         {
             Mounts = await DAL.MountData.GetMounts();
+            await ShowUserPreference();
+        }
 
-            WrathMounts =Mounts.Where(x => x.Expansion == "Wrath of the Lich King").ToList();
-            TbcMounts = Mounts.Where(x => x.Expansion == "Burning Crusade").ToList();
-            VanillaMounts = Mounts.Where(x => x.Expansion == "Vanilla").ToList();
+        public async Task ShowUserPreference()
+        {
+            foreach (string faction in Preferences.Factions)
+            {
+                foreach (string playerClass in Preferences.Classes)
+                {
+                    foreach (string expansion in Preferences.Expansions)
+                    {
+                        foreach (var mount in Mounts.Where(m => m.Faction == faction && m.PlayerClass == playerClass && m.Expansion == expansion))
+                        {
+                            ShowMounts.Add(mount);
+                        }
+                    }
+                }
+            }
+        }
 
-            VanillaMountsNeutral = VanillaMounts.Where(x => x.Faction == "Neutral").ToList();
-            VanillaMountsAliance = VanillaMounts.Where(x => x.Faction == "Aliance").ToList();
-            VanillaMountsHorde = VanillaMounts.Where(x => x.Faction =="Horde").ToList();
 
-            TbcMountsNeutral = TbcMounts.Where(x => x.Faction == "Neutral").ToList();
-            TbcMountsAliance = TbcMounts.Where(x => x.Faction == "Aliance").ToList();
-            TbcMountsHorde = TbcMounts.Where(x => x.Faction == "Horde").ToList();
+        public async Task<IActionResult> OnGetAsync(int id, string moreInfo)
+        {
+            Mounts = await DAL.MountData.GetMounts();
+            ShowMounts = await DAL.MountData.GetMounts();
 
-            WrathMountsNeutral = WrathMounts.Where(x => x.Faction == "Neutral").ToList();
-            WrathMountsAliance = WrathMounts.Where(x => x.Faction == "Aliance").ToList();
-            WrathMountsHorde = WrathMounts.Where(x => x.Faction == "Horde").ToList();
+            if (id != 0)
+            {
+                OneMount = await DAL.MountDataOne.GetOne(Mounts, id);
+
+            }
+            if (moreInfo != null)
+            {
+                Response.Redirect(moreInfo);
+            }
 
             return Page();
         }

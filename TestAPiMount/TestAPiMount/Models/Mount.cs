@@ -21,7 +21,7 @@ namespace TestAPiMount.Models
 
             string[] faction = new string[]
             {
-                "Neutral","Aliance","Horde"
+                "Neutral","Alliance","Horde"
             };
 
             string[] playerClass = new string[]
