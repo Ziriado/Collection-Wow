@@ -51,7 +51,6 @@ namespace DisplayMounts.Pages
             List<string> factionlist = new List<string>();
             List<string> expansionlist = new List<string>();
             List<string> playerClassesList = new List<string>();
-            List<string> CollectedMounts = new List<string>();
 
             if (Preferences.Factions == null) factionlist.Add("Neutral");
             else factionlist = Preferences.Factions;
@@ -59,19 +58,28 @@ namespace DisplayMounts.Pages
             if (Preferences.Expansions == null) expansionlist.Add("Vanilla");
             else expansionlist = Preferences.Expansions;
 
-            if (Preferences.Classes == null)  playerClassesList.Add("Neutral");
+            if (Preferences.Classes == null) playerClassesList.Add("Neutral");
             else playerClassesList = Preferences.Classes;
 
-            if (Preferences.Collected == null) playerClassesList.Add("Neutral");
-            else CollectedMounts = Preferences.Classes;
+            ShowMounts = factionlist.SelectMany(faction =>
+                            playerClassesList.SelectMany(playerClass =>
+                                expansionlist.SelectMany(expansion =>
+                                    Mounts.Where(m =>
+                                        m.Faction == faction &&
+                                        m.PlayerClass == playerClass &&
+                                        m.Expansion == expansion)))).ToList();
 
-            ShowMounts = factionlist.SelectMany
-                (faction => playerClassesList.SelectMany
-                (playerClass => expansionlist.SelectMany
-                (expansion => Mounts.Where
-                (m => m.Faction == faction && m.PlayerClass == playerClass && m.Expansion == expansion)))).ToList();
-            
+            if (Preferences.Collected != null)
+            {
+                MyUser = await _userManger.GetUserAsync(User);
+                var dbMounts = await _context.Collected
+                                        .Where(x => x.UserId == MyUser.Id)
+                                        .Select(x => x.MountId)
+                                        .ToListAsync();
+                ShowMounts = ShowMounts.Where(m => dbMounts.Contains(m.ID)).ToList();
+            }
         }
+
 
         public async Task<IActionResult> OnGetAsync(int id, string moreInfo)
         {
