@@ -5,8 +5,8 @@
 }
 
 <div class="text-center">
-    
-   @*<p>@Model.TempId</p>*@
+   
+    @*<p>@Model.TempId</p>*@
     @if (Model.OneMount != null)
     {
         <div class="card">
@@ -21,7 +21,11 @@
             @if (User.Identity.IsAuthenticated)
             {
             <p>@Model.MyUser.CharacterName</p>
+          @*  <form method="post" enctype="multipart/form-data">
                 
+                <input type="submit" class="btn btn-success" value="Save mount"/>
+            
+            </form>*@
             }
         </div>
     }

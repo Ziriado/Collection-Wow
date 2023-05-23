@@ -31,13 +31,29 @@ namespace DisplayMounts.Pages
         public Models.MountCollected MountCollected { get; set; }
         public List<Models.Mounts> ShowMounts { get; set; }
         public Models.Mounts OneMount { get; set; }
-
+        public static int TempId { get; set; }
         public async Task OnPost()
         {
             Mounts = await DAL.MountData.GetMounts();
+           
             await ShowUserPreference();
+
+                //MountCollected.MountId = TempId;
+                //MountCollected.UserId = MyUser.Id;
+                //_context.Add(MountCollected);
+                //await _context.SaveChangesAsync();
+           
             
         }
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    MountCollected.MountId = TempId;
+        //    MountCollected.UserId =MyUser.Id;
+        //    _context.Add(MountCollected);
+        //    await _context.SaveChangesAsync();
+
+        //    return RedirectToPage("./Index");
+        //}
 
         public async Task ShowUserPreference()
         {
@@ -79,7 +95,7 @@ namespace DisplayMounts.Pages
             if (id != 0)
             {
                 OneMount = await DAL.MountDataOne.GetOne(Mounts, id);
-                
+                TempId = id;
 
             }
             if (moreInfo != null)
