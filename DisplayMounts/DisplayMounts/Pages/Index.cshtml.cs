@@ -1,4 +1,5 @@
 ﻿using DisplayMounts.Areas.Identity.Data;
+using DisplayMounts.Migrations;
 using DisplayMounts.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +34,8 @@ namespace DisplayMounts.Pages
         public List<Models.Mounts> ShowMounts { get; set; }
         public Models.Mounts OneMount { get; set; }
         public static int TempId { get; set; }
+        public bool HasMount { get; set; }
+
         public async Task OnPost()
         {
             Mounts = await DAL.MountData.GetMounts();
@@ -103,17 +106,10 @@ namespace DisplayMounts.Pages
             MountCollectedOne.UserId = MyUser.Id;
             var dbMount = await _context.Collected.Where(x => x.UserId == MyUser.Id && x.MountId == mountId).ToListAsync();
             
-            if (dbMount.Count==0) 
-            {
-            _context.Add(MountCollectedOne);
-                
-            }
-
-
+            if (dbMount.Count==0)
+                _context.Add(MountCollectedOne);
             else
-            {
                 _context.Remove(dbMount[0]);
-            }
 
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");

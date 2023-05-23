@@ -21,8 +21,15 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <form method="post" asp-page-handler="SaveMount">
-                    <input type="hidden" name="mountId" value="@Model.OneMount.ID" />
+                <input type="hidden" name="mountId" value="@Model.OneMount.ID" />
+                if (Model.HasMount)
+                {
+                    <button type="submit" class="btn-danger">Remove Mount</button>
+                }
+                else
+                {
                     <button type="submit" class="btn-success">Save Mount</button>
+                }
                 </form>
 
             @*<form method="post" enctype="multipart/form-data">
