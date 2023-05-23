@@ -5,7 +5,8 @@
 }
 
 <div class="text-center">
-
+    
+   @*<p>@Model.TempId</p>*@
     @if (Model.OneMount != null)
     {
         <div class="card">
@@ -17,6 +18,11 @@
             <p>@Model.OneMount.PlayerClass</p>
             <p><a asp-route-moreinfo="@Model.OneMount.WebLink">More Info</a></p>
             <a href="##" onclick="history.go(-1); return false">Return</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+            <p>@Model.MyUser.CharacterName</p>
+                
+            }
         </div>
     }
     else

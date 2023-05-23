@@ -11,7 +11,7 @@ public class DisplayMountsContext : IdentityDbContext<DisplayMountsUser>
         : base(options)
     {
     }
-
+    public DbSet<Models.MountCollected> Collected { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
