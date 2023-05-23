@@ -96,11 +96,12 @@ namespace DisplayMounts.Pages
 
         public async Task<IActionResult> OnPostSaveMount([FromForm] int mountId)
         {
+            MyUser = await _userManger.GetUserAsync(User);
             MountCollected.MountId = mountId;
-            MountCollected.UserId = MyUser.UserName;
+            MountCollected.UserId = MyUser.Id;
             _context.Add(MountCollected);
             await _context.SaveChangesAsync();
-
+            
             return Page();
         }
 
