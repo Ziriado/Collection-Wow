@@ -51,23 +51,19 @@ namespace DisplayMounts.Pages
             List<string> factionlist = new List<string>();
             List<string> expansionlist = new List<string>();
             List<string> playerClassesList = new List<string>();
-            if (Preferences.Factions == null)
-                factionlist.Add("Neutral");
+            List<string> CollectedMounts = new List<string>();
 
-            else
-                factionlist = Preferences.Factions;
+            if (Preferences.Factions == null) factionlist.Add("Neutral");
+            else factionlist = Preferences.Factions;
 
-            if (Preferences.Expansions == null)
-                expansionlist.Add("Vanilla");
+            if (Preferences.Expansions == null) expansionlist.Add("Vanilla");
+            else expansionlist = Preferences.Expansions;
 
-            else
-                expansionlist = Preferences.Expansions;
+            if (Preferences.Classes == null)  playerClassesList.Add("Neutral");
+            else playerClassesList = Preferences.Classes;
 
-            if (Preferences.Classes == null)
-                playerClassesList.Add("Neutral");
-
-            else
-                playerClassesList = Preferences.Classes;
+            if (Preferences.Collected == null) playerClassesList.Add("Neutral");
+            else CollectedMounts = Preferences.Classes;
 
             ShowMounts = factionlist.SelectMany
                 (faction => playerClassesList.SelectMany
@@ -76,6 +72,7 @@ namespace DisplayMounts.Pages
                 (m => m.Faction == faction && m.PlayerClass == playerClass && m.Expansion == expansion)))).ToList();
             
         }
+
         public async Task<IActionResult> OnGetAsync(int id, string moreInfo)
         {
             Mounts = await DAL.MountData.GetMounts();
@@ -87,7 +84,7 @@ namespace DisplayMounts.Pages
             {
                 OneMount = await DAL.MountDataOne.GetOne(Mounts, id);
                 TempId = id;
-                
+
 
             }
             if (moreInfo != null)
