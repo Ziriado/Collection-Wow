@@ -3,6 +3,7 @@ using DisplayMounts.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DisplayMounts.Pages
@@ -28,7 +29,7 @@ namespace DisplayMounts.Pages
         public static List<Models.Mounts> Mounts { get; set; }
         public List<Models.MountCollected> MountsCollected { get; set; }
         [BindProperty]
-        public Models.MountCollected MountCollected { get; set; }
+        public Models.MountCollected MountCollectedOne { get; set; }
         public List<Models.Mounts> ShowMounts { get; set; }
         public Models.Mounts OneMount { get; set; }
         public static int TempId { get; set; }
@@ -76,7 +77,7 @@ namespace DisplayMounts.Pages
         {
             Mounts = await DAL.MountData.GetMounts();
             ShowMounts = await DAL.MountData.GetMounts();
-
+            //MountsCollected = await _context.Collected.ToListAsync();
             MyUser = await _userManger.GetUserAsync(User);
 
             if (id != 0)
@@ -97,13 +98,24 @@ namespace DisplayMounts.Pages
 
         public async Task<IActionResult> OnPostSaveMount([FromForm] int mountId)
         {
-          
             MyUser = await _userManger.GetUserAsync(User);
-            MountCollected.MountId = mountId;
-            MountCollected.UserId = MyUser.Id;
-            _context.Add(MountCollected);
-            await _context.SaveChangesAsync();
+            MountCollectedOne.MountId = mountId;
+            MountCollectedOne.UserId = MyUser.Id;
+            var dbMount = await _context.Collected.Where(x => x.UserId == MyUser.Id && x.MountId == mountId).ToListAsync();
             
+            if (dbMount.Count==0) 
+            {
+            _context.Add(MountCollectedOne);
+                
+            }
+
+
+            else
+            {
+                _context.Remove(dbMount[0]);
+            }
+
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
 
