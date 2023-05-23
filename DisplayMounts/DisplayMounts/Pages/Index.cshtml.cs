@@ -87,7 +87,14 @@ namespace DisplayMounts.Pages
             {
                 OneMount = await DAL.MountDataOne.GetOne(Mounts, id);
                 TempId = id;
-                
+                if (User.Identity.IsAuthenticated)
+                {
+                var dbMount = await _context.Collected.Where(x => x.UserId == MyUser.Id && x.MountId == id).ToListAsync();
+                    if (dbMount.Count != 0)
+                    {
+                        HasMount= true;
+                    }
+                }
 
             }
             if (moreInfo != null)
