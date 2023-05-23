@@ -20,7 +20,11 @@
             <a href="##" onclick="history.go(-1); return false">Return</a>
             @if (User.Identity.IsAuthenticated)
             {
-                <button type="button" onclick="saveMount(@Model.OneMount.ID)">Save Mount</button>
+                <form method="post" asp-page-handler="SaveMount">
+                    <input type="hidden" name="mountId" value="@Model.OneMount.ID" />
+                    <button type="submit" class="btn-success">Save Mount</button>
+                </form>
+
             @*<form method="post" enctype="multipart/form-data">
                 
                 <input type="submit" class="btn btn-success" value="Save mount"/>

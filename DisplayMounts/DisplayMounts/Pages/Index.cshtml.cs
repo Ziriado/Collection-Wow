@@ -38,22 +38,9 @@ namespace DisplayMounts.Pages
            
             await ShowUserPreference();
 
-                //MountCollected.MountId = TempId;
-                //MountCollected.UserId = MyUser.Id;
-                //_context.Add(MountCollected);
-                //await _context.SaveChangesAsync();
            
             
         }
-        //public async Task<IActionResult> OnPostAsync()
-        //{
-        //    MountCollected.MountId = TempId;
-        //    MountCollected.UserId =MyUser.Id;
-        //    _context.Add(MountCollected);
-        //    await _context.SaveChangesAsync();
-
-        //    return RedirectToPage("./Index");
-        //}
 
         public async Task ShowUserPreference()
         {
@@ -105,5 +92,18 @@ namespace DisplayMounts.Pages
            
             return Page();
         }
+
+
+        public async Task<IActionResult> OnPostSaveMount([FromForm] int mountId)
+        {
+            MountCollected.MountId = mountId;
+            MountCollected.UserId = MyUser.UserName;
+            _context.Add(MountCollected);
+            await _context.SaveChangesAsync();
+
+            return Page();
+        }
+
+
     }
 }
