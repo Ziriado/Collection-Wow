@@ -72,7 +72,7 @@ namespace DisplayMounts.Pages
                                         m.PlayerClass == playerClass &&
                                         m.Expansion == expansion)))).ToList();
 
-            if (Preferences.Collected.Count == 1)
+            if (Preferences.Collected !=null && Preferences.Collected.Count==1)
             {
 
 
