@@ -35,6 +35,9 @@ namespace DisplayMounts.Pages
         public Models.Mounts OneMount { get; set; }
         public static int TempId { get; set; }
         public bool HasMount { get; set; }
+        public List<Models.Comments> Comments { get; set; }
+        [BindProperty]
+        public Models.Comments Comment { get; set; }
 
         public async Task OnPost()
         {
@@ -142,6 +145,17 @@ namespace DisplayMounts.Pages
             return RedirectToPage("./Index");
         }
 
-
+        public async Task<IActionResult> OnPostPostComment([FromForm] int mountId)
+        {
+            MyUser = await _userManger.GetUserAsync(User);
+            Comment.CommentCreated=DateTime.Now;
+            Comment.UserId = MyUser.Id;
+            Comment.MountId = mountId;
+            _context.Add(Comment);
+            await _context.SaveChangesAsync();
+            //Får se om det fungerar
+            //Comments.Add(Comment);
+            return Page();
+        }
     }
 }

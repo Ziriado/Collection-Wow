@@ -32,13 +32,48 @@
                 }
                 </form>
 
-            @*<form method="post" enctype="multipart/form-data">
-                
-                <input type="submit" class="btn btn-success" value="Save mount"/>
-            
-            </form>*@
             }
         </div>
+
+        <div>
+            @if (User.Identity.IsAuthenticated)
+            {
+
+                <form method="post" asp-page-handler="PostComment">
+                    <input type="hidden" name="mountId" value="@Model.OneMount.ID" />
+                    <label asp-for="Comment.Comment" class="form-label"></label>
+                    <textarea asp-for="Comment.Comment" class="form-control" cols="40" rows="5"></textarea>
+
+                    <input type="submit" class="btn btn-success" value="Post Comment">
+
+                </form>
+            }
+        </div>
+
+
+        <div class="row">
+    @if(Model.Comments !=null)
+    {
+        foreach(var comment in Model.Comments)
+        {
+            <div class="card m-2" style="width:18rem">
+                
+                <div class="card-body">
+                    <h5 class="card-title">@comment.UserId</h5>
+                    <p class="card-text">@comment.Comment</p>
+                   @* @if(user !=null && user.Id == blog.UserId)
+                    {
+                        <a asp-route-deleteid="@blog.Id" class="btn btn-primary">Ta bort</a>
+                    }*@
+                </div>
+                <p class="card-footer">@comment.CommentCreated</p>
+                </div>
+        }
+                
+    }
+
+
+</div>
     }
     else
     {
