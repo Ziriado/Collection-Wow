@@ -13,15 +13,15 @@ namespace DisplayMounts.Pages
     {
         private readonly UserManager<DisplayMountsUser> _userManger;
         private readonly Data.DisplayMountsContext _context;
-     
+
         public DisplayMountsUser MyUser { get; set; }
-        public IndexModel(UserManager<DisplayMountsUser>userManager,Data.DisplayMountsContext context)
+        public IndexModel(UserManager<DisplayMountsUser> userManager, Data.DisplayMountsContext context)
         {
             Mounts = new List<Models.Mounts>();
             ShowMounts = new List<Models.Mounts>();
             _userManger = userManager;
             _context = context;
-            
+
         }
 
         [BindProperty]
@@ -39,11 +39,11 @@ namespace DisplayMounts.Pages
         public async Task OnPost()
         {
             Mounts = await DAL.MountData.GetMounts();
-           
+
             await ShowUserPreference();
 
-           
-            
+
+
         }
 
         public async Task ShowUserPreference()
@@ -69,14 +69,29 @@ namespace DisplayMounts.Pages
                                         m.PlayerClass == playerClass &&
                                         m.Expansion == expansion)))).ToList();
 
-            if (Preferences.Collected != null)
+            if (Preferences.Collected.Count == 1)
             {
-                MyUser = await _userManger.GetUserAsync(User);
-                var dbMounts = await _context.Collected
-                                        .Where(x => x.UserId == MyUser.Id)
-                                        .Select(x => x.MountId)
-                                        .ToListAsync();
-                ShowMounts = ShowMounts.Where(m => dbMounts.Contains(m.ID)).ToList();
+
+
+
+                if (Preferences.Collected != null && Preferences.Collected[0] == "Collected")
+                {
+                    MyUser = await _userManger.GetUserAsync(User);
+                    var dbMounts = await _context.Collected
+                                            .Where(x => x.UserId == MyUser.Id)
+                                            .Select(x => x.MountId)
+                                            .ToListAsync();
+                    ShowMounts = ShowMounts.Where(m => dbMounts.Contains(m.ID)).ToList();
+                }
+                else if (Preferences.Collected != null && Preferences.Collected[0] == "NotCollected")
+                {
+                    MyUser = await _userManger.GetUserAsync(User);
+                    var dbMounts = await _context.Collected
+                                            .Where(x => x.UserId == MyUser.Id)
+                                            .Select(x => x.MountId)
+                                            .ToListAsync();
+                    ShowMounts = ShowMounts.Where(m => !dbMounts.Contains(m.ID)).ToList();
+                }
             }
         }
 
@@ -94,10 +109,10 @@ namespace DisplayMounts.Pages
                 TempId = id;
                 if (User.Identity.IsAuthenticated)
                 {
-                var dbMount = await _context.Collected.Where(x => x.UserId == MyUser.Id && x.MountId == id).ToListAsync();
+                    var dbMount = await _context.Collected.Where(x => x.UserId == MyUser.Id && x.MountId == id).ToListAsync();
                     if (dbMount.Count != 0)
                     {
-                        HasMount= true;
+                        HasMount = true;
                     }
                 }
 
@@ -106,7 +121,7 @@ namespace DisplayMounts.Pages
             {
                 Response.Redirect(moreInfo);
             }
-           
+
             return Page();
         }
 
@@ -117,8 +132,8 @@ namespace DisplayMounts.Pages
             MountCollectedOne.MountId = mountId;
             MountCollectedOne.UserId = MyUser.Id;
             var dbMount = await _context.Collected.Where(x => x.UserId == MyUser.Id && x.MountId == mountId).ToListAsync();
-            
-            if (dbMount.Count==0)
+
+            if (dbMount.Count == 0)
                 _context.Add(MountCollectedOne);
             else
                 _context.Remove(dbMount[0]);

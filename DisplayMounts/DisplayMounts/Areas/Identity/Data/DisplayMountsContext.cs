@@ -12,6 +12,7 @@ public class DisplayMountsContext : IdentityDbContext<DisplayMountsUser>
     {
     }
     public DbSet<Models.MountCollected> Collected { get; set; }
+    public DbSet<Models.Comments> Comment { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
