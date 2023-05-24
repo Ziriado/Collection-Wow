@@ -102,17 +102,21 @@ namespace DisplayMounts.Pages
         public async Task<IActionResult> OnGetAsync(int id, string moreInfo)
         {
             Mounts = await DAL.MountData.GetMounts();
+
             ShowMounts = await DAL.MountData.GetMounts();
             //MountsCollected = await _context.Collected.ToListAsync();
             MyUser = await _userManger.GetUserAsync(User);
 
             if (id != 0)
             {
+                Comments = await _context.Comment.Where(c => c.MountId == id).ToListAsync();
+
                 OneMount = await DAL.MountDataOne.GetOne(Mounts, id);
                 TempId = id;
                 if (User.Identity.IsAuthenticated)
                 {
                     var dbMount = await _context.Collected.Where(x => x.UserId == MyUser.Id && x.MountId == id).ToListAsync();
+
                     if (dbMount.Count != 0)
                     {
                         HasMount = true;
@@ -150,11 +154,25 @@ namespace DisplayMounts.Pages
             MyUser = await _userManger.GetUserAsync(User);
             Comment.CommentCreated=DateTime.Now;
             Comment.UserId = MyUser.Id;
+            Comment.UserName = MyUser.CharacterName;
             Comment.MountId = mountId;
             _context.Add(Comment);
             await _context.SaveChangesAsync();
             //Får se om det fungerar
             //Comments.Add(Comment);
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostRemoveComment([FromForm] int commentId)
+        {
+            var dbComments = await _context.Comment.Where(c => c.Id == commentId).FirstOrDefaultAsync();
+
+            if (dbComments != null)
+            {
+                _context.Remove(dbComments);
+                await _context.SaveChangesAsync();
+            }
+
             return Page();
         }
     }
