@@ -2157,10 +2157,10 @@ namespace TestAPiMount.Models
                 WebLink = "https://www.wowhead.com/wotlk/item=192455/kaluak-whalebone-glider"
             });
 
-            for (int i = 0; i < mounts.Count; i++)
-            {
-                mounts[i].Id = i + 1;
-            }
+            //for (int i = 0; i < mounts.Count; i++)
+            //{
+            //    mounts[i].Id = i + 1;
+            //}
             return mounts;
         }
     }

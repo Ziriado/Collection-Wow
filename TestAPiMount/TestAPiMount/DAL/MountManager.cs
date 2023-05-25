@@ -1,33 +1,40 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Drawing;
+using System.Security.Claims;
 using TestAPiMount.Models;
 
 namespace TestAPiMount.DAL
 {
     public class MountManager
     {
-        public static List<Models.Mount>Mounts { get; set; }
+        public static List<Models.Mount> Mounts { get; set; }
         private readonly MyDBContext _context;
         public MountManager(MyDBContext context)
         {
             _context = context;
         }
-        public  async Task<List<Mount>> GetMounts()
+        public async Task<List<Mount>> GetMounts()
         {
             List<Models.Mount> mounts = await _context.Mount.ToListAsync();
-            if(mounts.Count==0)
+
+
+            if (mounts.Count == 0)
             {
-                mounts=Models.Mount.AddMountToDb();
-                _context.AddRange(mounts);
-                await _context.SaveChangesAsync();
+                mounts = Models.Mount.AddMountToDb();
+                foreach (var mount in mounts)
+                {
+                    _context.Add(mount);
+                }
+                    _context.SaveChanges();
             }
             return mounts;
         }
 
-        public  async Task<Models.Mount>GetOneMount(int id)
+        public async Task<Models.Mount> GetOneMount(int id)
         {
             if (Mounts == null || !Mounts.Any())
             {
-                Mounts = await GetMounts() ;
+                Mounts = await GetMounts();
             }
 
             var existingProd = Mounts.Where(p => p.Id == id).SingleOrDefault();
@@ -41,18 +48,13 @@ namespace TestAPiMount.DAL
                 return null;
             }
         }
-        public  async Task CreateMount(Models.Mount mount)
+        public async Task CreateMount(Models.Mount mount)
         {
-            if (Mounts is null)
-            {
-                Mounts = await GetMounts();
-            }
-            var tempId = Mounts.LastOrDefault();
-            mount.Id = tempId.Id + 1;
-            Mounts.Add(mount);
+            await _context.AddAsync(mount);
+            await _context.SaveChangesAsync();
 
         }
-        public  async Task UpdateMount(Models.Mount mount, int id)
+        public async Task UpdateMount(Models.Mount mount, int id)
         {
             if (Mounts is null)
             {
@@ -70,16 +72,19 @@ namespace TestAPiMount.DAL
                 existingMount.Faction = mount.Faction;
                 existingMount.Name = mount.Name;
             }
+            await _context.SaveChangesAsync();
 
         }
-        public  async Task DeleteMount(int id)
+        public async Task DeleteMount(int id)
         {
             if (Mounts is null)
             {
                 Mounts = await GetMounts();
             }
-
+            var existingMount = Mounts.Where(p => p.Id == id).SingleOrDefault();
+            _context.Remove(existingMount);
             Mounts.RemoveAt(id);
+            await _context.SaveChangesAsync();
         }
     }
 }
