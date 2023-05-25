@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using TestAPiMount.DAL;
+
 namespace TestAPiMount
 {
     public class Program
@@ -8,6 +11,10 @@ namespace TestAPiMount
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            var connectionString = builder.Configuration.GetConnectionString("MyConnection");
+            builder.Services.AddDbContext<DAL.MyDBContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddTransient<MountManager>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

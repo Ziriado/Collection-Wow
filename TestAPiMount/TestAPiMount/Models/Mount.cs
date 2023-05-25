@@ -1,10 +1,11 @@
-﻿using static System.Net.WebRequestMethods;
+﻿using TestAPiMount.DAL;
+using static System.Net.WebRequestMethods;
 
 namespace TestAPiMount.Models
 {
     public class Mount
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string ImgLink { get; set; }
         public string Name { get; set; }
 
@@ -14,8 +15,9 @@ namespace TestAPiMount.Models
         public string Class { get; set; }
 
         public string Expansion { get; set; }
-
-        public static List<Mount> GetMounts()
+       
+     
+        public static List<Mount> AddMountToDb()
         {
             List<Mount> mounts = new List<Mount>();
 
@@ -2155,10 +2157,10 @@ namespace TestAPiMount.Models
                 WebLink = "https://www.wowhead.com/wotlk/item=192455/kaluak-whalebone-glider"
             });
 
-            for (int i = 0; i < mounts.Count; i++)
-            {
-                mounts[i].ID = i + 1;
-            }
+            //for (int i = 0; i < mounts.Count; i++)
+            //{
+            //    mounts[i].Id = i + 1;
+            //}
             return mounts;
         }
     }
