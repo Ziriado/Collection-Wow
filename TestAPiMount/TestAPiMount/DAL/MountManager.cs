@@ -83,7 +83,6 @@ namespace TestAPiMount.DAL
             }
             var existingMount = Mounts.Where(p => p.Id == id).FirstOrDefault();
             _context.Remove(existingMount);
-            Mounts.RemoveAt(id);
             await _context.SaveChangesAsync();
         }
     }
