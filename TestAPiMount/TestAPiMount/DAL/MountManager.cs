@@ -14,10 +14,10 @@ namespace TestAPiMount.DAL
         public  async Task<List<Mount>> GetMounts()
         {
             List<Models.Mount> mounts = await _context.Mount.ToListAsync();
-            if(mounts == null)
+            if(mounts.Count==0)
             {
                 mounts=Models.Mount.AddMountToDb();
-                await _context.AddRangeAsync(mounts);
+                _context.AddRange(mounts);
                 await _context.SaveChangesAsync();
             }
             return mounts;
