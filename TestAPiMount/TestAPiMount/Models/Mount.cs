@@ -1,10 +1,11 @@
-﻿using static System.Net.WebRequestMethods;
+﻿using TestAPiMount.DAL;
+using static System.Net.WebRequestMethods;
 
 namespace TestAPiMount.Models
 {
     public class Mount
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string ImgLink { get; set; }
         public string Name { get; set; }
 
@@ -14,8 +15,9 @@ namespace TestAPiMount.Models
         public string Class { get; set; }
 
         public string Expansion { get; set; }
-
-        public static List<Mount> GetMounts()
+       
+     
+        public static List<Mount> AddMountToDb()
         {
             List<Mount> mounts = new List<Mount>();
 
@@ -2157,7 +2159,7 @@ namespace TestAPiMount.Models
 
             for (int i = 0; i < mounts.Count; i++)
             {
-                mounts[i].ID = i + 1;
+                mounts[i].Id = i + 1;
             }
             return mounts;
         }
