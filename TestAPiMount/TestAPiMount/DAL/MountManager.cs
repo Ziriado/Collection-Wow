@@ -61,7 +61,7 @@ namespace TestAPiMount.DAL
                 Mounts = await GetMounts();
             }
 
-            var existingMount = Mounts.Where(p => p.Id == id).SingleOrDefault();
+            var existingMount = Mounts.Where(p => p.Id == id).FirstOrDefault();
 
             if (existingMount != null)
             {
@@ -81,7 +81,7 @@ namespace TestAPiMount.DAL
             {
                 Mounts = await GetMounts();
             }
-            var existingMount = Mounts.Where(p => p.Id == id).SingleOrDefault();
+            var existingMount = Mounts.Where(p => p.Id == id).FirstOrDefault();
             _context.Remove(existingMount);
             Mounts.RemoveAt(id);
             await _context.SaveChangesAsync();

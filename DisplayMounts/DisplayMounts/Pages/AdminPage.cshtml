@@ -12,9 +12,9 @@
         @for (int i = 1; i <= Model.Mounts.Count; i++)
         {
             <tr>
-                <td><a asp-route-editid="@Model.Mounts[i - 1].ID">Edit</a></td>
-                <td><a asp-route-deleteindex="@i">Remove</a></td>
-                <td>@Model.Mounts[i - 1].ID</td>
+                <td><a asp-route-editid="@Model.Mounts[i-1].Id">Edit</a></td>
+                <td><a asp-route-deleteindex="@Model.Mounts[i-1].Id">Remove</a></td>
+                <td>@Model.Mounts[i - 1].Id</td>
                 <td>@Model.Mounts[i - 1].Name</td>
                 <td>@Model.Mounts[i - 1].WebLink</td>
                 <td>@Model.Mounts[i - 1].Faction</td>
@@ -28,7 +28,7 @@
 
     <form method="post">
 
-        <input asp-for="NewMount.ID" type="hidden" />
+        <input asp-for="NewMount.Id" type="hidden" />
 
         <label asp-for="NewMount.Name"></label>
         <input asp-for="NewMount.Name" required/>

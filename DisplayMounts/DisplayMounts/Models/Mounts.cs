@@ -5,7 +5,7 @@ namespace DisplayMounts.Models
     public class Mounts
     {
         [JsonPropertyName("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
         [JsonPropertyName("imgLink")]
         public string ImgLink { get; set; }
 

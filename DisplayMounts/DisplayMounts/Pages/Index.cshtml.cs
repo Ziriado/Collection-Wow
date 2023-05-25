@@ -84,6 +84,7 @@ namespace DisplayMounts.Pages
                                             .Where(x => x.UserId == MyUser.Id)
                                             .Select(x => x.MountId)
                                             .ToListAsync();
+<<<<<<< Updated upstream
                     ShowMounts = ShowMounts.Where(m => dbMounts.Contains(m.ID)).ToList();
                 }
                 else if (Preferences.Collected != null && Preferences.Collected[0] == "NotCollected")
@@ -94,6 +95,15 @@ namespace DisplayMounts.Pages
                                             .Select(x => x.MountId)
                                             .ToListAsync();
                     ShowMounts = ShowMounts.Where(m => !dbMounts.Contains(m.ID)).ToList();
+=======
+                if (Preferences.Collected != null && Preferences.Collected[0] == "Collected")
+                {
+                    ShowMounts = ShowMounts.Where(m => dbMounts.Contains(m.Id)).ToList();
+                }
+                else if (Preferences.Collected != null && Preferences.Collected[0] == "NotCollected")
+                {
+                    ShowMounts = ShowMounts.Where(m => !dbMounts.Contains(m.Id)).ToList();
+>>>>>>> Stashed changes
                 }
             }
         }

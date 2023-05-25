@@ -22,7 +22,7 @@ namespace DisplayMounts.Pages
 
             if (deleteindex != 0)
             {
-                await DAL.MountData.DeleteMount(deleteindex - 1);
+                await DAL.MountData.DeleteMount(deleteindex );
                 Mounts = await DAL.MountData.GetMounts();
             }
 
