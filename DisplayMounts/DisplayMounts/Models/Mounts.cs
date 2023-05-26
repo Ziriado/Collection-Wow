@@ -12,7 +12,7 @@ namespace DisplayMounts.Models
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("faction")]
-        public string Faction { get; set; }
+        public string? Faction { get; set; }
         [JsonPropertyName("webLink")]
         public string WebLink { get; set; }
         [JsonPropertyName("class")]

@@ -71,9 +71,10 @@ namespace TestAPiMount.DAL
                 existingMount.Class = mount.Class;
                 existingMount.Faction = mount.Faction;
                 existingMount.Name = mount.Name;
+                
             }
             await _context.SaveChangesAsync();
-
+            var i = 45;
         }
         public async Task DeleteMount(int id)
         {

@@ -8,8 +8,6 @@ namespace DisplayMounts.Pages
         [BindProperty]
         public Models.Mounts NewMount { get; set; }
         public List<Models.Mounts> Mounts { get; set; }
-        [BindProperty]
-        public string FactionName { get; set; }
 
         public async Task<IActionResult>OnGetAsync(int editid,int deleteindex)
         {
