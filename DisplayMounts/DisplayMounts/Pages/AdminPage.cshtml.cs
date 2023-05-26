@@ -33,6 +33,9 @@ namespace DisplayMounts.Pages
                 await DAL.MountData.SaveMount(NewMount);
             }
             Mounts = await DAL.MountData.GetMounts();
+
+            if (NewMount != null) NewMount.Id = 0;
+
             return Page();
 
         }

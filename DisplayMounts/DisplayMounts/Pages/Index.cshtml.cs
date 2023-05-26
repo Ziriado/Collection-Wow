@@ -22,6 +22,13 @@ namespace DisplayMounts.Pages
             _userManger = userManager;
             _context = context;
 
+            Preferences = new PreferencesModel
+            {
+                Factions = new List<string>(),
+                Classes = new List<string>(),
+                Expansions = new List<string>(),
+                Collected = new List<string>()
+            };
         }
 
         [BindProperty]
@@ -46,7 +53,6 @@ namespace DisplayMounts.Pages
             await ShowUserPreference();
 
 
-
         }
 
         public async Task ShowUserPreference()
@@ -55,14 +61,43 @@ namespace DisplayMounts.Pages
             List<string> expansionlist = new List<string>();
             List<string> playerClassesList = new List<string>();
 
-            if (Preferences.Factions == null) factionlist.Add("Neutral");
-            else factionlist = Preferences.Factions;
+            if (!User.Identity.IsAuthenticated)
+            {
+                if (Preferences.Factions == null) factionlist.Add("Neutral");
+                else factionlist = Preferences.Factions;
 
-            if (Preferences.Expansions == null) expansionlist.Add("Vanilla");
-            else expansionlist = Preferences.Expansions;
+                if (Preferences.Expansions == null) expansionlist.Add("Vanilla");
+                else expansionlist = Preferences.Expansions;
 
-            if (Preferences.Classes == null) playerClassesList.Add("Neutral");
-            else playerClassesList = Preferences.Classes;
+                if (Preferences.Classes == null) playerClassesList.Add("Neutral");
+                else playerClassesList = Preferences.Classes;
+            }
+            else
+            {
+                MyUser = await _userManger.GetUserAsync(User);
+
+                if (Preferences.Factions == null) 
+                {
+                    factionlist.Add("Neutral");
+                    factionlist.Add(MyUser.Faction);
+                }
+                else factionlist = Preferences.Factions;
+
+                if (Preferences.Expansions == null)
+                {
+                    expansionlist.Add("Vanilla");
+                    expansionlist.Add("Burning Crusade");
+                    expansionlist.Add("Wrath of the Lich King");
+                }
+                else expansionlist = Preferences.Expansions;
+
+                if (Preferences.Classes == null)
+                {
+                    playerClassesList.Add("Neutral");
+                    playerClassesList.Add(MyUser.Class);
+                }
+                else playerClassesList = Preferences.Classes;
+            }
 
             ShowMounts = factionlist.SelectMany(faction =>
                             playerClassesList.SelectMany(playerClass =>
@@ -72,7 +107,7 @@ namespace DisplayMounts.Pages
                                         m.PlayerClass == playerClass &&
                                         m.Expansion == expansion)))).ToList();
 
-            if (Preferences.Collected !=null && Preferences.Collected.Count==1)
+            if (Preferences.Collected != null && Preferences.Collected.Count == 1)
             {
                 MyUser = await _userManger.GetUserAsync(User);
                 var dbMounts = await _context.Collected
@@ -97,7 +132,6 @@ namespace DisplayMounts.Pages
             Mounts = await DAL.MountData.GetMounts();
 
             ShowMounts = await DAL.MountData.GetMounts();
-            //MountsCollected = await _context.Collected.ToListAsync();
             MyUser = await _userManger.GetUserAsync(User);
 
             if (id != 0)
@@ -151,8 +185,6 @@ namespace DisplayMounts.Pages
             Comment.MountId = mountId;
             _context.Add(Comment);
             await _context.SaveChangesAsync();
-            //Får se om det fungerar
-            //Comments.Add(Comment);
             return Page();
         }
 

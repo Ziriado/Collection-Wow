@@ -6,7 +6,6 @@
 
 <div class="text-center">
    
-    @*<p>@Model.TempId</p>*@
     @if (Model.OneMount != null)
     {
         <div class="card">
@@ -16,9 +15,15 @@
             <p>@Model.OneMount.Faction</p>
             <p>@Model.OneMount.Expansion</p>
             <p>@Model.OneMount.PlayerClass</p>
-            <p><a asp-route-moreinfo="@Model.OneMount.WebLink">More Info</a></p>
-            <a href="##" onclick="history.go(-1); return false">Return</a>
-            @if (User.Identity.IsAuthenticated)
+            <p><a asp-route-moreinfo="@Model.OneMount.WebLink" target="_blank">More Info</a></p>
+            <a asp-route-return="Index.cshtml">Return</a>
+
+
+
+            @if (User.Identity.IsAuthenticated && Model.MyUser.Faction == Model.OneMount.Faction && Model.MyUser.Class == Model.OneMount.PlayerClass ||
+           User.Identity.IsAuthenticated && Model.MyUser.Faction == Model.OneMount.Faction && Model.OneMount.PlayerClass == "Neutral" ||
+           User.Identity.IsAuthenticated && Model.OneMount.Faction == "Neutral" && Model.MyUser.Class == Model.OneMount.PlayerClass ||
+           User.Identity.IsAuthenticated && Model.OneMount.Faction == "Neutral" && Model.OneMount.PlayerClass == "Neutral" )
             {
                 <form method="post" asp-page-handler="SaveMount">
                 <input type="hidden" name="mountId" value="@Model.OneMount.Id" />
@@ -76,7 +81,7 @@
     }
 
 
-</div>
+        </div>
     }
     else
     {
@@ -84,33 +89,36 @@
         <div class="userpreference" id="preference">
             <form method="post">
                 <h3>Faction</h3>
-                <a>Neutral<input id="NeutralCheckBox" type="checkbox" value="Neutral" name="Preferences.Factions" /></a>
-                <a>Aliance<input id="AllianceCheckBox" type="checkbox" value="Alliance" name="Preferences.Factions" /></a>
-                <a>Horde</a><input id="HordeCheckBox" type="checkbox" value="Horde" name="Preferences.Factions" />
+                <a>Neutral<input id="NeutralCheckBox" type="checkbox" value="Neutral" name="Preferences.Factions" @(Model.Preferences.Factions != null && Model.Preferences.Factions.Contains("Neutral") ? "checked" : "") /></a>
+                <a>Alliance<input id="AllianceCheckBox" type="checkbox" value="Alliance" name="Preferences.Factions" @(Model.Preferences.Factions != null && Model.Preferences.Factions.Contains("Alliance") ? "checked" : "") /></a>
+                <a>Horde<input id="HordeCheckBox" type="checkbox" value="Horde" name="Preferences.Factions" @(Model.Preferences.Factions != null && Model.Preferences.Factions.Contains("Horde") ? "checked" : "") /></a>
                 <br>
+
                 <h3>Class</h3>
-                <a>Neutral<input id="NeutralCheckBox" type="checkbox" value="Neutral" name="Preferences.Classes" /></a>
-                <a>Priest</a><input id="AllianceCheckBox" type="checkbox" value="Priest" name="Preferences.Classes" />
-                <a>Warlock</a><input id="HordeCheckBox" type="checkbox" value="Warlock" name="Preferences.Classes" />
-                <a>Mage</a><input id="NeutralCheckBox" type="checkbox" value="Mage" name="Preferences.Classes" />
-                <a>Druid</a><input id="AllianceCheckBox" type="checkbox" value="Druid" name="Preferences.Classes" />
-                <a>Rogue</a><input id="HordeCheckBox" type="checkbox" value="Rogue" name="Preferences.Classes" />
-                <a>Shaman</a><input id="NeutralCheckBox" type="checkbox" value="Shaman" name="Preferences.Classes" />
-                <a>Hunter</a><input id="AllianceCheckBox" type="checkbox" value="Hunter" name="Preferences.Classes" />
-                <a>Warrior</a><input id="HordeCheckBox" type="checkbox" value="Warior" name="Preferences.Classes" />
-                <a>Paladin</a><input id="AllianceCheckBox" type="checkbox" value="Paladin" name="Preferences.Classes" />
-                <a>Death Knight</a><input id="HordeCheckBox" type="checkbox" value="Death Knight" name="Preferences.Classes" />
+                <a>Neutral<input id="NeutralClassCheckBox" type="checkbox" value="Neutral" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Neutral") ? "checked" : "") /></a>
+                <a>Priest<input id="PriestCheckBox" type="checkbox" value="Priest" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Priest") ? "checked" : "") /></a>
+                <a>Warlock<input id="WarlockCheckBox" type="checkbox" value="Warlock" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Warlock") ? "checked" : "") /></a>
+                <a>Mage<input id="MageCheckBox" type="checkbox" value="Mage" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Mage") ? "checked" : "") /></a>
+                <a>Druid<input id="DruidCheckBox" type="checkbox" value="Druid" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Druid") ? "checked" : "") /></a>
+                <a>Rogue<input id="RogueCheckBox" type="checkbox" value="Rogue" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Rogue") ? "checked" : "") /></a>
+                <a>Shaman<input id="ShamanCheckBox" type="checkbox" value="Shaman" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Shaman") ? "checked" : "") /></a>
+                <a>Hunter<input id="HunterCheckBox" type="checkbox" value="Hunter" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Hunter") ? "checked" : "") /></a>
+                <a>Warrior<input id="WarriorCheckBox" type="checkbox" value="Warrior" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Warrior") ? "checked" : "") /></a>
+                <a>Paladin<input id="PaladinCheckBox" type="checkbox" value="Paladin" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Paladin") ? "checked" : "") /></a>
+                <a>Death Knight<input id="DeathKnightCheckBox" type="checkbox" value="Death Knight" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Death Knight") ? "checked" : "") /></a>
                 <br>
+
                 <h3>Expansion</h3>
-                <a>Vanilla</a><input id="NeutralCheckBox" type="checkbox" value="Vanilla" name="Preferences.Expansions" />
-                <a>Burning Crusade</a><input id="AllianceCheckBox" type="checkbox" value="Burning Crusade" name="Preferences.Expansions" />
-                <a>Wrath of the Lich King</a><input id="HordeCheckBox" type="checkbox" value="Wrath of the Lich King" name="Preferences.Expansions" />
+                <a>Vanilla<input id="VanillaCheckBox" type="checkbox" value="Vanilla" name="Preferences.Expansions" @(Model.Preferences.Expansions != null && Model.Preferences.Expansions.Contains("Vanilla") ? "checked" : "") /></a>
+                <a>Burning Crusade<input id="BurningCrusadeCheckBox" type="checkbox" value="Burning Crusade" name="Preferences.Expansions" @(Model.Preferences.Expansions != null && Model.Preferences.Expansions.Contains("Burning Crusade") ? "checked" : "") /></a>
+                <a>Wrath of the Lich King<input id="WrathOfTheLichKingCheckBox" type="checkbox" value="Wrath of the Lich King" name="Preferences.Expansions" @(Model.Preferences.Expansions != null && Model.Preferences.Expansions.Contains("Wrath of the Lich King") ? "checked" : "") /></a>
                 <br>
+
                 @if (User.Identity.IsAuthenticated)
                 {
                     <h3>Collected</h3>
-                    <a>Collected<input id="CollectedCheckBox" type="checkbox" value="Collected" name="Preferences.Collected" /></a>
-                    <a>Not Collected<input id="NotCollectedCheckBox" type="checkbox" value="NotCollected" name="Preferences.Collected" /></a>
+                    <a>Collected<input id="CollectedCheckBox" type="checkbox" value="Collected" name="Preferences.Collected" @(Model.Preferences.Collected != null && Model.Preferences.Collected.Contains("Collected") ? "checked" : "") /></a>
+                    <a>Not Collected<input id="NotCollectedCheckBox" type="checkbox" value="NotCollected" name="Preferences.Collected" @(Model.Preferences.Collected != null && Model.Preferences.Collected.Contains("NotCollected") ? "checked" : "") /></a>
                 }
                 <button type="submit">Save Changes</button>
             </form>
@@ -123,7 +131,6 @@
                     <a asp-route-id="@mount.Id"><img src="@mount.ImgLink" /></a>
                     <h3>@mount.Name</h3>
                     <h5>@mount.Id is the id </h5>
-                    @*<p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>*@
                     <p>@mount.Faction</p>
                     <p>@mount.Expansion</p>
                     <p>@mount.PlayerClass</p>
@@ -133,137 +140,3 @@
         </div>
 
     }
-
-    @*<h1>Vanilla</h1>
-    <h3>Neutral Mounts</h3>
-    <h3>Aliance</h3>
-    <div class="mountpage" id="mountpage">
-    @foreach (var mount in Model.VanillaMountsAliance)
-    {
-    <div class="card">
-    <a><img src="@mount.ImgLink" /></a>
-    <h3>@mount.Name</h3>
-    <h5>@mount.ID is the id </h5>
-    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-    <p>@mount.Faction</p>
-    <p>@mount.Expansion</p>
-    <p>@mount.PlayerClass</p>
-    </div>
-    }
-    </div>
-    <br />
-    <h3>Horde</h3>
-    <div class="mountpage" id="mountpage">
-    @foreach (var mount in Model.VanillaMountsHorde)
-    {
-    <div class="card">
-    <a><img src="@mount.ImgLink" /></a>
-    <h3>@mount.Name</h3>
-    <h5>@mount.ID is the id </h5>
-    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-    <p>@mount.Faction</p>
-    <p>@mount.Expansion</p>
-    <p>@mount.PlayerClass</p>
-    </div>
-    }
-    </div>
-    <br />
-    <h1>The Burning Crusade</h1>
-    <h3>Neutral Mounts</h3>
-    <div class="mountpage" id="mountpage">
-    @foreach (var mount in Model.TbcMountsNeutral)
-    {
-    <div class="card">
-    <a><img src="@mount.ImgLink" /></a>
-    <h3>@mount.Name</h3>
-    <h5>@mount.ID is the id </h5>
-    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-    <p>@mount.Faction</p>
-    <p>@mount.Expansion</p>
-    <p>@mount.PlayerClass</p>
-    </div>
-    }
-    </div>
-    <br />
-    <h3>Aliance</h3>
-    <div class="mountpage" id="mountpage">
-    @foreach (var mount in Model.TbcMountsAliance)
-    {
-    <div class="card">
-    <a><img src="@mount.ImgLink" /></a>
-    <h3>@mount.Name</h3>
-    <h5>@mount.ID is the id </h5>
-    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-    <p>@mount.Faction</p>
-    <p>@mount.Expansion</p>
-    <p>@mount.PlayerClass</p>
-    </div>
-    }
-    </div>
-    <br />
-    <h3>Horde</h3>
-    <div class="mountpage" id="mountpage">
-    @foreach (var mount in Model.TbcMountsHorde)
-    {
-    <div class="card">
-    <a><img src="@mount.ImgLink" /></a>
-    <h3>@mount.Name</h3>
-    <h5>@mount.ID is the id </h5>
-    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-    <p>@mount.Faction</p>
-    <p>@mount.Expansion</p>
-    <p>@mount.PlayerClass</p>
-    </div>
-    }
-    <br />
-    </div>
-    <h1>Wrath of the Lich King</h1>
-    <h3>Neutral Mounts</h3>
-    <div class="mountpage" id="mountpage">
-    @foreach (var mount in Model.WrathMountsNeutral)
-    {
-    <div class="card">
-    <a><img src="@mount.ImgLink" /></a>
-    <h3>@mount.Name</h3>
-    <h5>@mount.ID is the id </h5>
-    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-    <p>@mount.Faction</p>
-    <p>@mount.Expansion</p>
-    <p>@mount.PlayerClass</p>
-    </div>
-    }
-    </div>
-    <br />
-    <h3>Aliance</h3>
-    <div class="mountpage" id="mountpage">
-    @foreach (var mount in Model.WrathMountsAliance)
-    {
-    <div class="card">
-    <a><img src="@mount.ImgLink" /></a>
-    <h3>@mount.Name</h3>
-    <h5>@mount.ID is the id </h5>
-    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-    <p>@mount.Faction</p>
-    <p>@mount.Expansion</p>
-    <p>@mount.PlayerClass</p>
-    </div>
-    }
-    </div>
-    <br />
-    <h3>Horde</h3>
-    <div class="mountpage" id="mountpage">
-    @foreach (var mount in Model.WrathMountsHorde)
-    {
-    <div class="card">
-    <a><img src="@mount.ImgLink" /></a>
-    <h3>@mount.Name</h3>
-    <h5>@mount.ID is the id </h5>
-    <p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>
-    <p>@mount.Faction</p>
-    <p>@mount.Expansion</p>
-    <p>@mount.PlayerClass</p>
-    </div>
-    }
-    </div>
-    <br />
-    </div>*@

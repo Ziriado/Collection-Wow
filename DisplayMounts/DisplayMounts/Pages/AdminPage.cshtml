@@ -1,7 +1,7 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Admin Page";
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -19,9 +19,6 @@
         <label asp-for="NewMount.Name"></label>
         <input asp-for="NewMount.Name" required/>
         <br />
-        <label asp-for="NewMount.ImgLink"></label>
-        <input asp-for="NewMount.ImgLink" required />
-        <br />
         <label asp-for="NewMount.Expansion"></label>
         <select asp-for="NewMount.Expansion" required>
             <option value="">Select an expansion</option>
@@ -29,9 +26,6 @@
             <option value="Burning Crusade">Burning Crusade</option>
             <option value="Wrath of the Lich King">Wrath of the Lich King</option>
         </select>
-        <br />
-        <label asp-for="NewMount.WebLink"></label>
-        <input asp-for="NewMount.WebLink" required />
         <br />
         <label asp-for="NewMount.Faction"></label>
         <select asp-for="NewMount.Faction" required>
@@ -56,6 +50,12 @@
             <option value="Paladin">Paladin</option>
             <option value="Death Knight">Death Knight</option>
         </select>
+        <br />
+        <label asp-for="NewMount.WebLink"></label>
+        <input asp-for="NewMount.WebLink" required />
+        <br />
+        <label asp-for="NewMount.ImgLink"></label>
+        <input asp-for="NewMount.ImgLink" required />
         <br />
         <input type="submit" value="Add new mount/Save changes" />
 
