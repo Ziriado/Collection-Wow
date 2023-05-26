@@ -11,10 +11,12 @@
         <div class="card">
             <a><img src="@Model.OneMount.ImgLink" /></a>
             <h3>@Model.OneMount.Name</h3>
-            <h5>@Model.OneMount.Id is the id </h5>
-            <p>@Model.OneMount.Faction</p>
-            <p>@Model.OneMount.Expansion</p>
-            <p>@Model.OneMount.PlayerClass</p>
+            <p>Faction: @Model.OneMount.Faction</p>
+            <p>Expansion: @Model.OneMount.Expansion</p>
+            @if(Model.OneMount.PlayerClass != "Neutral")
+            {
+            <p>Class: @Model.OneMount.PlayerClass</p>     
+            }
             <p><a asp-route-moreinfo="@Model.OneMount.WebLink" target="_blank">More Info</a></p>
             <a asp-route-return="Index.cshtml">Return</a>
 
@@ -89,38 +91,39 @@
         <div class="userpreference" id="preference">
             <form method="post">
                 <h3>Faction</h3>
-                <a>Neutral<input id="NeutralCheckBox" type="checkbox" value="Neutral" name="Preferences.Factions" @(Model.Preferences.Factions != null && Model.Preferences.Factions.Contains("Neutral") ? "checked" : "") /></a>
-                <a>Alliance<input id="AllianceCheckBox" type="checkbox" value="Alliance" name="Preferences.Factions" @(Model.Preferences.Factions != null && Model.Preferences.Factions.Contains("Alliance") ? "checked" : "") /></a>
-                <a>Horde<input id="HordeCheckBox" type="checkbox" value="Horde" name="Preferences.Factions" @(Model.Preferences.Factions != null && Model.Preferences.Factions.Contains("Horde") ? "checked" : "") /></a>
+                <a>Neutral<input id="NeutralCheckBox" type="checkbox" class="m-1" value="Neutral" name="Preferences.Factions" @(Model.Preferences.Factions != null && Model.Preferences.Factions.Contains("Neutral") ? "checked" : "") /></a>
+                <a>Alliance<input id="AllianceCheckBox" type="checkbox" class="m-1" value="Alliance" name="Preferences.Factions" @(Model.Preferences.Factions != null && Model.Preferences.Factions.Contains("Alliance") ? "checked" : "") /></a>
+                <a>Horde<input id="HordeCheckBox" type="checkbox" class="m-1" value="Horde" name="Preferences.Factions" @(Model.Preferences.Factions != null && Model.Preferences.Factions.Contains("Horde") ? "checked" : "") /></a>
                 <br>
 
                 <h3>Class</h3>
-                <a>Neutral<input id="NeutralClassCheckBox" type="checkbox" value="Neutral" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Neutral") ? "checked" : "") /></a>
-                <a>Priest<input id="PriestCheckBox" type="checkbox" value="Priest" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Priest") ? "checked" : "") /></a>
-                <a>Warlock<input id="WarlockCheckBox" type="checkbox" value="Warlock" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Warlock") ? "checked" : "") /></a>
-                <a>Mage<input id="MageCheckBox" type="checkbox" value="Mage" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Mage") ? "checked" : "") /></a>
-                <a>Druid<input id="DruidCheckBox" type="checkbox" value="Druid" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Druid") ? "checked" : "") /></a>
-                <a>Rogue<input id="RogueCheckBox" type="checkbox" value="Rogue" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Rogue") ? "checked" : "") /></a>
-                <a>Shaman<input id="ShamanCheckBox" type="checkbox" value="Shaman" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Shaman") ? "checked" : "") /></a>
-                <a>Hunter<input id="HunterCheckBox" type="checkbox" value="Hunter" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Hunter") ? "checked" : "") /></a>
-                <a>Warrior<input id="WarriorCheckBox" type="checkbox" value="Warrior" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Warrior") ? "checked" : "") /></a>
-                <a>Paladin<input id="PaladinCheckBox" type="checkbox" value="Paladin" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Paladin") ? "checked" : "") /></a>
-                <a>Death Knight<input id="DeathKnightCheckBox" type="checkbox" value="Death Knight" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Death Knight") ? "checked" : "") /></a>
+                <a>Neutral<input id="NeutralClassCheckBox" type="checkbox" class="m-1" value="Neutral" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Neutral") ? "checked" : "") /></a>
+                <a>Priest<input id="PriestCheckBox" type="checkbox" class="m-1" value="Priest" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Priest") ? "checked" : "") /></a>
+                <a>Warlock<input id="WarlockCheckBox" type="checkbox" class="m-1" value="Warlock" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Warlock") ? "checked" : "") /></a>
+                <a>Mage<input id="MageCheckBox" type="checkbox" class="m-1" value="Mage" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Mage") ? "checked" : "") /></a>
+                <a>Druid<input id="DruidCheckBox" type="checkbox" class="m-1" value="Druid" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Druid") ? "checked" : "") /></a>
+                <a>Rogue<input id="RogueCheckBox" type="checkbox" class="m-1" value="Rogue" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Rogue") ? "checked" : "") /></a>
+                <a>Shaman<input id="ShamanCheckBox" type="checkbox" class="m-1" value="Shaman" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Shaman") ? "checked" : "") /></a>
+                <a>Hunter<input id="HunterCheckBox" type="checkbox" class="m-1" value="Hunter" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Hunter") ? "checked" : "") /></a>
+                <a>Warrior<input id="WarriorCheckBox" type="checkbox" class="m-1" value="Warrior" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Warrior") ? "checked" : "") /></a>
+                <a>Paladin<input id="PaladinCheckBox" type="checkbox" class="m-1" value="Paladin" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Paladin") ? "checked" : "") /></a>
+                <a>Death Knight<input id="DeathKnightCheckBox" type="checkbox" class="m-1" value="Death Knight" name="Preferences.Classes" @(Model.Preferences.Classes != null && Model.Preferences.Classes.Contains("Death Knight") ? "checked" : "") /></a>
                 <br>
 
                 <h3>Expansion</h3>
-                <a>Vanilla<input id="VanillaCheckBox" type="checkbox" value="Vanilla" name="Preferences.Expansions" @(Model.Preferences.Expansions != null && Model.Preferences.Expansions.Contains("Vanilla") ? "checked" : "") /></a>
-                <a>Burning Crusade<input id="BurningCrusadeCheckBox" type="checkbox" value="Burning Crusade" name="Preferences.Expansions" @(Model.Preferences.Expansions != null && Model.Preferences.Expansions.Contains("Burning Crusade") ? "checked" : "") /></a>
-                <a>Wrath of the Lich King<input id="WrathOfTheLichKingCheckBox" type="checkbox" value="Wrath of the Lich King" name="Preferences.Expansions" @(Model.Preferences.Expansions != null && Model.Preferences.Expansions.Contains("Wrath of the Lich King") ? "checked" : "") /></a>
+                <a>Vanilla<input id="VanillaCheckBox" type="checkbox" class="m-1" value="Vanilla" name="Preferences.Expansions" @(Model.Preferences.Expansions != null && Model.Preferences.Expansions.Contains("Vanilla") ? "checked" : "") /></a>
+                <a>Burning Crusade<input id="BurningCrusadeCheckBox" type="checkbox" class="m-1" value="Burning Crusade" name="Preferences.Expansions" @(Model.Preferences.Expansions != null && Model.Preferences.Expansions.Contains("Burning Crusade") ? "checked" : "") /></a>
+                <a>Wrath of the Lich King<input id="WrathOfTheLichKingCheckBox" type="checkbox" class="m-1" value="Wrath of the Lich King" name="Preferences.Expansions" @(Model.Preferences.Expansions != null && Model.Preferences.Expansions.Contains("Wrath of the Lich King") ? "checked" : "") /></a>
                 <br>
 
                 @if (User.Identity.IsAuthenticated)
                 {
                     <h3>Collected</h3>
-                    <a>Collected<input id="CollectedCheckBox" type="checkbox" value="Collected" name="Preferences.Collected" @(Model.Preferences.Collected != null && Model.Preferences.Collected.Contains("Collected") ? "checked" : "") /></a>
-                    <a>Not Collected<input id="NotCollectedCheckBox" type="checkbox" value="NotCollected" name="Preferences.Collected" @(Model.Preferences.Collected != null && Model.Preferences.Collected.Contains("NotCollected") ? "checked" : "") /></a>
+                    <a>Collected<input id="CollectedCheckBox" type="checkbox" class="m-1" value="Collected" name="Preferences.Collected" @(Model.Preferences.Collected != null && Model.Preferences.Collected.Contains("Collected") ? "checked" : "") /></a>
+                    <a>Not Collected<input id="NotCollectedCheckBox" type="checkbox" class="m-1" value="NotCollected" name="Preferences.Collected" @(Model.Preferences.Collected != null && Model.Preferences.Collected.Contains("NotCollected") ? "checked" : "") /></a>
                 }
-                <button type="submit">Save Changes</button>
+                <br>
+                <button type="submit" class="btn-success mt-2 mb-2">Search Preference</button>
             </form>
         </div>
 
@@ -130,10 +133,7 @@
                 <div class="card">
                     <a asp-route-id="@mount.Id"><img src="@mount.ImgLink" /></a>
                     <h3>@mount.Name</h3>
-                    <h5>@mount.Id is the id </h5>
-                    <p>@mount.Faction</p>
-                    <p>@mount.Expansion</p>
-                    <p>@mount.PlayerClass</p>
+                    
                 </div>
             }
             <br />
