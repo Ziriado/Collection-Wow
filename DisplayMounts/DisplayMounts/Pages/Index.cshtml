@@ -12,7 +12,7 @@
         <div class="card">
             <a><img src="@Model.OneMount.ImgLink" /></a>
             <h3>@Model.OneMount.Name</h3>
-            <h5>@Model.OneMount.ID is the id </h5>
+            <h5>@Model.OneMount.Id is the id </h5>
             <p>@Model.OneMount.Faction</p>
             <p>@Model.OneMount.Expansion</p>
             <p>@Model.OneMount.PlayerClass</p>
@@ -21,7 +21,7 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <form method="post" asp-page-handler="SaveMount">
-                <input type="hidden" name="mountId" value="@Model.OneMount.ID" />
+                <input type="hidden" name="mountId" value="@Model.OneMount.Id" />
                 @if (Model.HasMount)
                 {
                     <button type="submit" class="btn-danger">Remove Mount</button>
@@ -40,7 +40,7 @@
             {
 
                 <form method="post" asp-page-handler="PostComment">
-                    <input type="hidden" name="mountId" value="@Model.OneMount.ID" />
+                    <input type="hidden" name="mountId" value="@Model.OneMount.Id" />
                     <label asp-for="Comment.Comment" class="form-label"></label>
                     <textarea asp-for="Comment.Comment" class="form-control" cols="40" rows="5"></textarea>
 
@@ -120,9 +120,9 @@
             @foreach (var mount in Model.ShowMounts)
             {
                 <div class="card">
-                    <a asp-route-id="@mount.ID"><img src="@mount.ImgLink" /></a>
+                    <a asp-route-id="@mount.Id"><img src="@mount.ImgLink" /></a>
                     <h3>@mount.Name</h3>
-                    <h5>@mount.ID is the id </h5>
+                    <h5>@mount.Id is the id </h5>
                     @*<p><a href="@mount.WebLink" class="stretched-link">More Info</a></p>*@
                     <p>@mount.Faction</p>
                     <p>@mount.Expansion</p>

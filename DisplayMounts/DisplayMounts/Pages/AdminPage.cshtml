@@ -8,27 +8,13 @@
 <div class="text-center">
 
 
-    <table class="table">
-        @for (int i = 1; i <= Model.Mounts.Count; i++)
-        {
-            <tr>
-                <td><a asp-route-editid="@Model.Mounts[i - 1].ID">Edit</a></td>
-                <td><a asp-route-deleteindex="@i">Remove</a></td>
-                <td>@Model.Mounts[i - 1].ID</td>
-                <td>@Model.Mounts[i - 1].Name</td>
-                <td>@Model.Mounts[i - 1].WebLink</td>
-                <td>@Model.Mounts[i - 1].Faction</td>
-                <td>@Model.Mounts[i - 1].Expansion</td>
-                <td>@Model.Mounts[i - 1].PlayerClass</td>
-                <td>@Model.Mounts[i - 1].ImgLink</td>
-            </tr>
-        }
-    </table>
-
-
     <form method="post">
-
-        <input asp-for="NewMount.ID" type="hidden" />
+        
+        @if (Model.NewMount != null && Model.NewMount.Id != 0)
+        {
+            <input asp-for="NewMount.Id" type="hidden" />
+        }
+        
 
         <label asp-for="NewMount.Name"></label>
         <input asp-for="NewMount.Name" required/>
@@ -55,8 +41,8 @@
             <option value="Horde">Horde</option>
         </select>
         <br />
-        <label asp-for="NewMount.Expansion"></label>
-        <select asp-for="NewMount.Expansion" required>
+        <label asp-for="NewMount.PlayerClass"></label>
+        <select asp-for="NewMount.PlayerClass" required>
             <option value="">Select a class</option>
             <option value="Neutral">Neutral</option>
             <option value="Priest">Priest</option>
@@ -79,6 +65,21 @@
 
     </form>
 
-
+    <table class="table">
+        @for (int i = 1; i <= Model.Mounts.Count; i++)
+        {
+            <tr>
+                <td><a asp-route-editid="@Model.Mounts[i-1].Id">Edit</a></td>
+                <td><a asp-route-deleteindex="@Model.Mounts[i-1].Id">Remove</a></td>
+                <td>@Model.Mounts[i - 1].Id</td>
+                <td>@Model.Mounts[i - 1].Name</td>
+                <td>@Model.Mounts[i - 1].WebLink</td>
+                <td>@Model.Mounts[i - 1].Faction</td>
+                <td>@Model.Mounts[i - 1].Expansion</td>
+                <td>@Model.Mounts[i - 1].PlayerClass</td>
+                <td>@Model.Mounts[i - 1].ImgLink</td>
+            </tr>
+        }
+    </table>
     
 </div>

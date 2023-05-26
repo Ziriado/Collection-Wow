@@ -25,17 +25,14 @@ namespace TestAPiMount.DAL
                 {
                     _context.Add(mount);
                 }
-                    _context.SaveChanges();
+                _context.SaveChanges();
             }
             return mounts;
         }
 
         public async Task<Models.Mount> GetOneMount(int id)
         {
-            if (Mounts == null || !Mounts.Any())
-            {
-                Mounts = await GetMounts();
-            }
+            Mounts = await GetMounts();
 
             var existingProd = Mounts.Where(p => p.Id == id).SingleOrDefault();
 
@@ -48,20 +45,18 @@ namespace TestAPiMount.DAL
                 return null;
             }
         }
+
         public async Task CreateMount(Models.Mount mount)
         {
             await _context.AddAsync(mount);
             await _context.SaveChangesAsync();
-
         }
+
         public async Task UpdateMount(Models.Mount mount, int id)
         {
-            if (Mounts is null)
-            {
-                Mounts = await GetMounts();
-            }
+            Mounts = await GetMounts();
 
-            var existingMount = Mounts.Where(p => p.Id == id).SingleOrDefault();
+            var existingMount = Mounts.Where(p => p.Id == id).FirstOrDefault();
 
             if (existingMount != null)
             {
@@ -71,9 +66,9 @@ namespace TestAPiMount.DAL
                 existingMount.Class = mount.Class;
                 existingMount.Faction = mount.Faction;
                 existingMount.Name = mount.Name;
+                
             }
             await _context.SaveChangesAsync();
-
         }
         public async Task DeleteMount(int id)
         {
@@ -81,9 +76,8 @@ namespace TestAPiMount.DAL
             {
                 Mounts = await GetMounts();
             }
-            var existingMount = Mounts.Where(p => p.Id == id).SingleOrDefault();
+            var existingMount = Mounts.Where(p => p.Id == id).FirstOrDefault();
             _context.Remove(existingMount);
-            Mounts.RemoveAt(id);
             await _context.SaveChangesAsync();
         }
     }

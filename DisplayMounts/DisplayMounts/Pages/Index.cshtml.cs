@@ -74,18 +74,19 @@ namespace DisplayMounts.Pages
 
             if (Preferences.Collected !=null && Preferences.Collected.Count==1)
             {
-                    MyUser = await _userManger.GetUserAsync(User);
-                    var dbMounts = await _context.Collected
-                                            .Where(x => x.UserId == MyUser.Id)
-                                            .Select(x => x.MountId)
-                                            .ToListAsync();
+                MyUser = await _userManger.GetUserAsync(User);
+                var dbMounts = await _context.Collected
+                                        .Where(x => x.UserId == MyUser.Id)
+                                        .Select(x => x.MountId)
+                                        .ToListAsync();
+
                 if (Preferences.Collected != null && Preferences.Collected[0] == "Collected")
                 {
-                    ShowMounts = ShowMounts.Where(m => dbMounts.Contains(m.ID)).ToList();
+                    ShowMounts = ShowMounts.Where(m => dbMounts.Contains(m.Id)).ToList();
                 }
                 else if (Preferences.Collected != null && Preferences.Collected[0] == "NotCollected")
                 {
-                    ShowMounts = ShowMounts.Where(m => !dbMounts.Contains(m.ID)).ToList();
+                    ShowMounts = ShowMounts.Where(m => !dbMounts.Contains(m.Id)).ToList();
                 }
             }
         }
