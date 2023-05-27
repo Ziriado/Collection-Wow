@@ -131,9 +131,30 @@
             @foreach (var mount in Model.ShowMounts)
             {
                 <div class="card">
-                    <a asp-route-id="@mount.Id"><img src="@mount.ImgLink" /></a>
+                    @*@if (User.Identity.IsAuthenticated)
+                    {
+                        if (Model.MountsCollected != null && Model.MountsCollected.Any(c => c.MountId == mount.Id))
+                        {
+                            <a asp-route-id="@mount.Id"><img src="@mount.ImgLink" /></a>
+                        }
+                        else
+                        {
+                            <a asp-route-id="@mount.Id"><img src="@mount.ImgLink" class="black-and-white-img" /></a>
+                        }
+                    }
+                    else
+                    {
+                        <a asp-route-id="@mount.Id"><img src="@mount.ImgLink" /></a>
+                    }*@
+
+                    @{
+                        bool isAuthenticated = User.Identity.IsAuthenticated;
+                        bool isCollected = isAuthenticated && Model.MountsCollected.Any(c => c.MountId == mount.Id);
+                        string imgClass = !isCollected && isAuthenticated ? "black-and-white-img" : "";
+                    }
+                    <a asp-route-id="@mount.Id"><img src="@mount.ImgLink" class="@imgClass" /></a>
+
                     <h3>@mount.Name</h3>
-                    
                 </div>
             }
             <br />

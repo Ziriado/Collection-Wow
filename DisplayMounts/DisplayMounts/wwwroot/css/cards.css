@@ -22,3 +22,6 @@
     background-color: bisque;
 }
 
+.black-and-white-img {
+    filter: grayscale(100%);
+}

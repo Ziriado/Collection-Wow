@@ -75,6 +75,7 @@ namespace DisplayMounts.Pages
             else
             {
                 MyUser = await _userManger.GetUserAsync(User);
+                MountsCollected = await _context.Collected.Where(x => x.UserId == MyUser.Id).ToListAsync();
 
                 if (Preferences.Factions == null) 
                 {
@@ -130,9 +131,10 @@ namespace DisplayMounts.Pages
         public async Task<IActionResult> OnGetAsync(int id, string moreInfo)
         {
             Mounts = await DAL.MountData.GetMounts();
-
             ShowMounts = await DAL.MountData.GetMounts();
             MyUser = await _userManger.GetUserAsync(User);
+            if (User.Identity.IsAuthenticated && MyUser != null)
+                MountsCollected = await _context.Collected.Where(x => x.UserId == MyUser.Id).ToListAsync();
 
             if (id != 0)
             {
