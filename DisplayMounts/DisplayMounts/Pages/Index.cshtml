@@ -23,20 +23,16 @@
 
 
             @if (User.Identity.IsAuthenticated && Model.MyUser.Faction == Model.OneMount.Faction && Model.MyUser.Class == Model.OneMount.PlayerClass ||
-           User.Identity.IsAuthenticated && Model.MyUser.Faction == Model.OneMount.Faction && Model.OneMount.PlayerClass == "Neutral" ||
-           User.Identity.IsAuthenticated && Model.OneMount.Faction == "Neutral" && Model.MyUser.Class == Model.OneMount.PlayerClass ||
-           User.Identity.IsAuthenticated && Model.OneMount.Faction == "Neutral" && Model.OneMount.PlayerClass == "Neutral" )
+                 User.Identity.IsAuthenticated && Model.MyUser.Faction == Model.OneMount.Faction && Model.OneMount.PlayerClass == "Neutral" ||
+                 User.Identity.IsAuthenticated && Model.OneMount.Faction == "Neutral" && Model.MyUser.Class == Model.OneMount.PlayerClass ||
+                 User.Identity.IsAuthenticated && Model.OneMount.Faction == "Neutral" && Model.OneMount.PlayerClass == "Neutral" )
             {
-                <form method="post" asp-page-handler="SaveMount">
+                <form method="post" asp-page-handler="ToggleMount">
                 <input type="hidden" name="mountId" value="@Model.OneMount.Id" />
-                @if (Model.HasMount)
-                {
-                    <button type="submit" class="btn-danger">Remove Mount</button>
-                }
-                else
-                {
-                    <button type="submit" class="btn-success">Save Mount</button>
-                }
+                    <button type="submit" class="
+                        @(Model.MountsCollected.Any(x => x.UserId == Model.MyUser.Id && x.MountId == Model.OneMount.Id) ? "btn-danger" : "btn-success")">
+                        @(Model.MountsCollected.Any(x => x.UserId == Model.MyUser.Id && x.MountId == Model.OneMount.Id) ? "Remove Mount" : "Save Mount")
+                    </button>
                 </form>
 
             }
