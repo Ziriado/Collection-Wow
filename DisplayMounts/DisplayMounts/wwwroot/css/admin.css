@@ -1,5 +1,40 @@
 ﻿.menufordropdown
 {
-    width:200px;
+    width:20px;
     height:30px;
 }
+
+
+
+
+.form-row {
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+.label-left {
+    width: 120px; /* Adjust the width as needed */
+    text-align: left;
+    margin-right: 10px; /* Adjust the spacing between label and input */
+}
+
+.input-right {
+    flex: 1;
+    text-align: right;
+    max-width: 100px;
+}
+
+.save-Mount {
+    text-align: left;
+    border: solid;
+    max-width: 332px;
+    border-block-color: black;
+    padding: 3px;
+}
+
+
+
+
+
