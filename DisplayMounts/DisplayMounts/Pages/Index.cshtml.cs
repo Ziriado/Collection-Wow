@@ -58,7 +58,9 @@ namespace DisplayMounts.Pages
 
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            await ReloadPage(mountId);
+
+            return Page();
         }
         public async Task<IActionResult> OnPostPostComment([FromForm] int mountId)
         {
@@ -69,6 +71,9 @@ namespace DisplayMounts.Pages
             Comment.MountId = mountId;
             _context.Add(Comment);
             await _context.SaveChangesAsync();
+
+            await ReloadPage(mountId);
+
             return Page();
         }
         public async Task<IActionResult> OnPostRemoveComment([FromForm] int commentId)
@@ -81,10 +86,12 @@ namespace DisplayMounts.Pages
                 await _context.SaveChangesAsync();
             }
 
+            await ReloadPage(dbComments.MountId);
+
             return Page();
         }
 
-        public async Task<IActionResult> OnGetAsync(int id, string moreInfo)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             Mounts = await DAL.MountData.GetMounts();
             ShowMounts = await DAL.MountData.GetMounts();
@@ -99,11 +106,22 @@ namespace DisplayMounts.Pages
                 OneMount = Mounts.Where(x => x.Id == id).FirstOrDefault();
             }
 
-            if (moreInfo != null)
-            {
-                Response.Redirect(moreInfo);
-            }
+            return Page();
+        }
 
+        public async Task<IActionResult> ReloadPage(int mountId = 0)
+        {
+            MyUser = await _userManger.GetUserAsync(User);
+            Mounts = await DAL.MountData.GetMounts();
+
+            if (User.Identity.IsAuthenticated && MyUser != null)
+                MountsCollected = await _context.Collected.Where(x => x.UserId == MyUser.Id).ToListAsync();
+
+            if (mountId != 0)
+            {
+                Comments = await _context.Comment.Where(c => c.MountId == mountId).ToListAsync();
+                OneMount = Mounts.Where(x => x.Id == mountId).FirstOrDefault();
+            }
             return Page();
         }
 
