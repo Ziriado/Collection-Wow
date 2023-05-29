@@ -8,7 +8,7 @@
    
     @if (Model.OneMount != null)
     {
-        @*<div class="card">*@
+        
             <div class="oneMount">
             <a><img class="onemountimg" src="@Model.OneMount.ImgLink" /></a>
             <h3 class="m-2">@Model.OneMount.Name</h3>
@@ -31,9 +31,9 @@
             {
                 <form method="post" asp-page-handler="ToggleMount">
                 <input type="hidden" name="mountId" value="@Model.OneMount.Id" />
-                    <button type="submit" class="
-                        @(Model.MountsCollected.Any(x => x.UserId == Model.MyUser.Id && x.MountId == Model.OneMount.Id) ? "btn-danger" : "btn-success")">
-                        @(Model.MountsCollected.Any(x => x.UserId == Model.MyUser.Id && x.MountId == Model.OneMount.Id) ? "Remove Mount" : "Save Mount")
+                    <button type="submit" class=" m-3
+                        @(Model.MountsCollected.Any(x => x.UserId == Model.MyUser.Id && x.MountId == Model.OneMount.Id) ? "btn-danger" : "btn-success") ">
+                        @(Model.MountsCollected.Any(x => x.UserId == Model.MyUser.Id && x.MountId == Model.OneMount.Id) ? "Remove From Collection" : "Add To Collection")
                     </button>
                 </form>
 
@@ -46,7 +46,7 @@
 
                 <form method="post" asp-page-handler="PostComment">
                     <input type="hidden" name="mountId" value="@Model.OneMount.Id" />
-                    <label asp-for="Comment.Comment" class="form-label"></label>
+                    <h2>Post A Comment</h2>
                     <textarea asp-for="Comment.Comment" class="form-control" cols="40" rows="5"></textarea>
 
                     <input type="submit" class="btn btn-success m-2" value="Post Comment">
@@ -64,8 +64,10 @@
             <div class="card m-2" style="width:18rem">
                 
                 <div class="card-body">
-                    <h5 class="card-title">@comment.UserName</h5>
+                    <h5 class="card-title">User: @comment.UserName</h5>
+                    <hr>
                     <p class="card-text">@comment.Comment</p>
+                    <hr>
                             @if (User.Identity.IsAuthenticated && Model.MyUser.Id == comment.UserId)
                                 {
                                     <form method="post" asp-page-handler="RemoveComment">
