@@ -17,10 +17,10 @@
         
 
         <label asp-for="NewMount.Name" class="m-2"></label>
-        <input asp-for="NewMount.Name" required/>
+        <input asp-for="NewMount.Name" class="menufordropdown" required />
         <br />
         <label asp-for="NewMount.Expansion" class="m-2"></label>
-        <select asp-for="NewMount.Expansion" required>
+        <select asp-for="NewMount.Expansion" class="menufordropdown m-2" required>
             <option value="">Select an expansion</option>
             <option value="Vanilla">Vanilla</option>
             <option value="Burning Crusade">Burning Crusade</option>
@@ -28,7 +28,7 @@
         </select>
         <br />
         <label asp-for="NewMount.Faction" class="m-2"></label>
-        <select asp-for="NewMount.Faction" required>
+        <select asp-for="NewMount.Faction" class="menufordropdown" required>
             <option value="">Select a faction</option>
             <option value="Neutral">Neutral</option>
             <option value="Alliance">Alliance</option>
@@ -36,7 +36,7 @@
         </select>
         <br />
         <label asp-for="NewMount.PlayerClass"class="m-2"></label>
-        <select asp-for="NewMount.PlayerClass" required>
+        <select asp-for="NewMount.PlayerClass" class="menufordropdown" required>
             <option value="">Select a class</option>
             <option value="Neutral">Neutral</option>
             <option value="Priest">Priest</option>
@@ -52,10 +52,10 @@
         </select>
         <br />
         <label asp-for="NewMount.WebLink" class="m-2"></label>
-        <input asp-for="NewMount.WebLink" required />
+        <input asp-for="NewMount.WebLink" class="menufordropdown" required />
         <br />
         <label asp-for="NewMount.ImgLink" class="m-2"></label>
-        <input asp-for="NewMount.ImgLink" required />
+        <input asp-for="NewMount.ImgLink" class="menufordropdown" required />
         <br />
         <input type="submit" class="btn-primary m-2"  value="Add new mount/Save changes" />
 
