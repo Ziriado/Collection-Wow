@@ -8,16 +8,18 @@
    
     @if (Model.OneMount != null)
     {
-        <div class="card">
-            <a><img src="@Model.OneMount.ImgLink" /></a>
-            <h3>@Model.OneMount.Name</h3>
-            <p>Faction: @Model.OneMount.Faction</p>
-            <p>Expansion: @Model.OneMount.Expansion</p>
+        @*<div class="card">*@
+            <div class="oneMount">
+            <a><img class="onemountimg" src="@Model.OneMount.ImgLink" /></a>
+            <h3 class="m-2">@Model.OneMount.Name</h3>
+            <h4>Faction: @Model.OneMount.Faction</h4>
+            <h4>Expansion: @Model.OneMount.Expansion</h4>
+            
             @if(Model.OneMount.PlayerClass != "Neutral")
             {
             <p>Class: @Model.OneMount.PlayerClass</p>     
             }
-            <p><a asp-route-moreinfo="@Model.OneMount.WebLink" target="_blank">More Info</a></p>
+            <p><a href="@Model.OneMount.WebLink" target="_blank">More Info</a></p>
             <a asp-route-return="Index.cshtml">Return</a>
 
 
@@ -47,7 +49,7 @@
                     <label asp-for="Comment.Comment" class="form-label"></label>
                     <textarea asp-for="Comment.Comment" class="form-control" cols="40" rows="5"></textarea>
 
-                    <input type="submit" class="btn btn-success" value="Post Comment">
+                    <input type="submit" class="btn btn-success m-2" value="Post Comment">
 
                 </form>
             }

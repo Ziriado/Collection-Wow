@@ -1,9 +1,8 @@
 ﻿.card {
     position: relative;
-    /* offset-x | offset-y | blur-radius | color */
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
     width: 12em;
-    margin: 2vw;
+    margin: 1vw;
     text-align: center;
     font-family: arial;
     background-color: white;
@@ -19,7 +18,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     flex-basis: 75vw;
-    background-color: bisque;
+    background-color: gray;
 }
 
 .black-and-white-img {

@@ -7,8 +7,12 @@
 
 <div class="text-center">
 
-
-    <form method="post">
+    @if (User.Identity.IsAuthenticated )
+    {
+        @if (Model.MyUser.Id == "9fa7037c-a563-4eb2-9aa7-0fa23ebd09f5")
+        {
+            
+        <form method="post">
         
         @if (Model.NewMount != null && Model.NewMount.Id != 0)
         {
@@ -16,7 +20,7 @@
         }
 
         <div class="save-Mount">
-            <h1> Modify Mount </h1>
+            <h4> Modify Mount </h4>
 
 
         <div class="form-row">
@@ -156,6 +160,16 @@
                 <td>@Model.Mounts[i - 1].ImgLink</td>
             </tr>
         }
-    </table>
-    
+            </table>
+
+        }
+        else
+        {
+            <p>Not admin</p>
+        }
+    }
+    else
+    {
+        <p>You are not the admin</p>
+    }
 </div>

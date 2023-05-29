@@ -28,7 +28,7 @@
 
 .save-Mount {
     text-align: left;
-    border: solid;
+    border:dashed;
     max-width: 332px;
     border-block-color: black;
     padding: 3px;
