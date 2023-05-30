@@ -37,6 +37,7 @@ namespace DisplayMounts
             app.MapRazorPages();
 
             app.Run();
+
         }
     }
 }

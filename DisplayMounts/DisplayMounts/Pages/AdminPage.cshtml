@@ -7,10 +7,8 @@
 
 <div class="text-center">
 
-    @if (User.Identity.IsAuthenticated )
+    @if (User.Identity.IsAuthenticated && Model.MyUser is not null && Model.MyUser.Id == "9fa7037c-a563-4eb2-9aa7-0fa23ebd09f5")
     {
-        @if (Model.MyUser.Id == "9fa7037c-a563-4eb2-9aa7-0fa23ebd09f5")
-        {
             
         <form method="post">
         
@@ -91,10 +89,9 @@
         <input type="submit" class="btn-primary m-2"  value="Add new mount/Save changes" />
 
         </div>
-
-
-
     </form>
+
+
 
     <table class="table">
         @for (int i = 1; i <= Model.Mounts.Count; i++)
@@ -112,15 +109,9 @@
             </tr>
         }
             </table>
-
-        }
-        else
-        {
-            <p class="text-info bg-danger text-warning">Not admin</p>
-        }
     }
     else
     {
-        <p class="text-info bg-danger text-warning">You are not the admin</p>
+        <p class="text-info bg-danger text-warning">You Do Not Have Permissions To Enter Admin Tools</p>
     }
 </div>

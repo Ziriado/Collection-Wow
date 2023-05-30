@@ -1,12 +1,25 @@
 ﻿.onemountimg {
     max-height: 700px;
     max-width: 700px;
+
 }
 .titlecomments{
     text-align:left;
     font-family:'Arial Rounded MT';
             
 }
-.returnbtn{
-   
+.returnbtn {
+    display: inline-block;
+}
+
+.return-image {
+    width: 50px;
+    height: 50px;
+}
+.backgroundboxcolor {
+    background-color: rgb(255, 255, 255 , 0.5);
+}
+
+.with-shadow {
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
 }

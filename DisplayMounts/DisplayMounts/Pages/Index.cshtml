@@ -8,26 +8,17 @@
 
     @if (Model.OneMount != null)
     {
-
+        
         <div class="oneMount">
             <div class="d-flex justify-content-start">
-                <a asp-route-return="Index.cshtml" class="returnbtn">Return</a>
+                <a asp-route-return="Index.cshtml" class="returnbtn">
+                    <img src="~/images/backbutton.png" alt="Return" class="return-image">
+                </a>
             </div>
+
             <div class="d-flex justify-content-center">
                 <a><img class="onemountimg" src="@Model.OneMount.ImgLink" /></a>
             </div>
-            <h3 class="m-2">@Model.OneMount.Name</h3>
-            <h4>Faction: @Model.OneMount.Faction</h4>
-            <h4>Expansion: @Model.OneMount.Expansion</h4>
-
-            @if (Model.OneMount.PlayerClass != "Neutral")
-            {
-                <p>Class: @Model.OneMount.PlayerClass</p>
-            }
-            <p><a href="@Model.OneMount.WebLink" target="_blank">More Info</a></p>
-
-
-
 
             @if (User.Identity.IsAuthenticated && Model.MyUser.Faction == Model.OneMount.Faction && Model.MyUser.Class == Model.OneMount.PlayerClass ||
            User.Identity.IsAuthenticated && Model.MyUser.Faction == Model.OneMount.Faction && Model.OneMount.PlayerClass == "Neutral" ||
@@ -43,6 +34,25 @@
                 </form>
 
             }
+
+            <h3 class="m-2 with-shadow">@Model.OneMount.Name</h3>
+            <h4 class="with-shadow">Faction: @Model.OneMount.Faction</h4>
+            <h4 class="with-shadow">Expansion: @Model.OneMount.Expansion</h4>
+
+            @if (Model.OneMount.PlayerClass != "Neutral")
+            {
+                <p>Class: @Model.OneMount.PlayerClass</p>
+            }
+
+            <a href="@Model.OneMount.WebLink" target="_blank">
+                <img src="~/images/moreinfo.png" alt="More Info" />
+            </a>
+
+
+
+
+
+
         </div>
 
         <div>
@@ -51,8 +61,8 @@
 
                 <form method="post" asp-page-handler="PostComment">
                     <input type="hidden" name="mountId" value="@Model.OneMount.Id" />
-                    <h2>Post A Comment</h2>
-                    <textarea asp-for="Comment.Comment" class="form-control" cols="40" rows="5"></textarea>
+                    <h2 class ="with-shadow">Post A Comment</h2>
+                    <textarea asp-for="Comment.Comment" class="form-control backgroundboxcolor" cols="40" rows="5"></textarea>
 
                     <input type="submit" class="btn btn-success m-2" value="Post Comment">
 
@@ -64,12 +74,12 @@
         <div class="row">
             @if (Model.Comments != null)
             {
-                <h3 class="titlecomments m-3">Comments</h3>
+                <h3 class="titlecomments m-3 with-shadow">Comments</h3>
                 <hr />
                 <br />
                 foreach (var comment in Model.Comments)
                 {
-                    <div class="card m-2" style="width:18rem">
+                    <div class="card m-2 backgroundboxcolor" style="width:18rem">
 
                         <div class="card-body">
                             <h5 class="card-title">User: @comment.UserName</h5>
