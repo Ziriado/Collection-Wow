@@ -19,6 +19,7 @@
     flex-wrap: wrap;
     flex-basis: 75vw;
     background-color: gray;
+    justify-content: space-between;
 }
 
 .black-and-white-img {

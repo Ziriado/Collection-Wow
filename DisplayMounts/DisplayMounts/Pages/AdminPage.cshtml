@@ -88,55 +88,6 @@
                 <input asp-for="NewMount.ImgLink" required />
             </div>
         </div>
-
-        
-
-        @*<label asp-for="NewMount.Name" class="m-2"></label>
-        <input asp-for="NewMount.Name" class="menufordropdown" required />
-        <br />
-        <label asp-for="NewMount.Expansion" class="m-2"></label>
-        <select asp-for="NewMount.Expansion" class="menufordropdown m-2" required>
-            <option value="">Select an expansion</option>
-            <option value="Vanilla">Vanilla</option>
-            <option value="Burning Crusade">Burning Crusade</option>
-            <option value="Wrath of the Lich King">Wrath of the Lich King</option>
-        </select>
-        <br />
-        <label asp-for="NewMount.Faction" class="m-2"></label>
-        <select asp-for="NewMount.Faction" class="menufordropdown" required>
-            <option value="">Select a faction</option>
-            <option value="Neutral">Neutral</option>
-            <option value="Alliance">Alliance</option>
-            <option value="Horde">Horde</option>
-        </select>
-        <br />*@
-
-        @*<label asp-for="NewMount.PlayerClass"class="m-2"></label>
-        <select asp-for="NewMount.PlayerClass" class="menufordropdown" required>
-            <option value="">Select a class</option>
-            <option value="Neutral">Neutral</option>
-            <option value="Priest">Priest</option>
-            <option value="Warlock">Warlock</option>
-            <option value="Mage">Mage</option>
-            <option value="Druid">Druid</option>
-            <option value="Rogue">Rogue</option>
-            <option value="Shaman">Shaman</option>
-            <option value="Hunter">Hunter</option>
-            <option value="Warrior">Warrior</option>
-            <option value="Paladin">Paladin</option>
-            <option value="Death Knight">Death Knight</option>
-        </select>*@
-
-
-        @*<br />
-        <label asp-for="NewMount.WebLink" class="m-2"></label>
-        <input asp-for="NewMount.WebLink" class="menufordropdown" required />
-        <br />
-        <label asp-for="NewMount.ImgLink" class="m-2"></label>
-        <input asp-for="NewMount.ImgLink" class="menufordropdown" required />
-        <br />*@
-
-
         <input type="submit" class="btn-primary m-2"  value="Add new mount/Save changes" />
 
         </div>
@@ -165,11 +116,11 @@
         }
         else
         {
-            <p>Not admin</p>
+            <p class="text-info bg-danger text-warning">Not admin</p>
         }
     }
     else
     {
-        <p>You are not the admin</p>
+        <p class="text-info bg-danger text-warning">You are not the admin</p>
     }
 </div>
