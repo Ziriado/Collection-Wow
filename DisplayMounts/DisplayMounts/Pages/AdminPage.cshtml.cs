@@ -44,7 +44,7 @@ namespace DisplayMounts.Pages
             Mounts = await DAL.MountData.GetMounts();
 
             if (NewMount != null) NewMount.Id = 0;
-
+            MyUser = await _userManger.GetUserAsync(User);
             return Page();
 
         }

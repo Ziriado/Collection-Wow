@@ -72,10 +72,10 @@ namespace TestAPiMount.DAL
         }
         public async Task DeleteMount(int id)
         {
-            if (Mounts is null)
-            {
-                Mounts = await GetMounts();
-            }
+            //if (Mounts is null)
+            //{
+            Mounts = await GetMounts();
+            //}
             var existingMount = Mounts.Where(p => p.Id == id).FirstOrDefault();
             _context.Remove(existingMount);
             await _context.SaveChangesAsync();

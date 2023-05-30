@@ -10,8 +10,10 @@
     {
 
         <div class="oneMount">
-            <div>
+            <div class="d-flex justify-content-start">
                 <a asp-route-return="Index.cshtml" class="returnbtn">Return</a>
+            </div>
+            <div class="d-flex justify-content-center">
                 <a><img class="onemountimg" src="@Model.OneMount.ImgLink" /></a>
             </div>
             <h3 class="m-2">@Model.OneMount.Name</h3>
@@ -149,5 +151,5 @@
             }
             <br />
         </div>
-
+       
     }
