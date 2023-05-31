@@ -3,7 +3,8 @@ namespace DisplayMounts.DAL
 {
     public class MountData
     {
-        private static Uri BaseAdress = new Uri("https://localhost:44305/");
+        //https://localhost:44305/
+        private static Uri BaseAdress = new Uri("https://ourgroupapi.azurewebsites.net/");
         public static async Task<List<Models.Mounts>> GetMounts()
         {
             List<Models.Mounts> mounts = new();
