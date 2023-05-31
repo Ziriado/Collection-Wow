@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/css/onemount.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DisplayMounts.styles.css" asp-append-version="true" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -42,13 +43,20 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <div class="text-center mb-2">
+            <partial name="_CookieConsentPartial" />
+
+            </div>
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - DisplayMounts 
+            &copy; 2023 - DisplayMounts - 
+            <a href="/CookiePolicy">Cookie Policy</a>
+                
+            
         </div>
     </footer>
 
